@@ -29,7 +29,8 @@ kotlin {
     val serializationVersion = "1.3.3"
     val ktorVersion = "2.0.2"
     val koinVersion = "3.2.0"
-    
+    val napierVersion = "2.6.1"
+
     sourceSets {
         val commonMain by getting {
             dependencies {
@@ -38,8 +39,10 @@ kotlin {
                 implementation("io.ktor:ktor-client-core:$ktorVersion")
                 implementation("io.ktor:ktor-client-serialization:$ktorVersion")
                 implementation("io.ktor:ktor-client-content-negotiation:$ktorVersion")
+                implementation("io.ktor:ktor-client-logging:$ktorVersion")
                 implementation("io.ktor:ktor-serialization-kotlinx-json:$ktorVersion")
                 implementation("io.insert-koin:koin-core:$koinVersion")
+                api("io.github.aakira:napier:$napierVersion")
             }
         }
         val commonTest by getting {

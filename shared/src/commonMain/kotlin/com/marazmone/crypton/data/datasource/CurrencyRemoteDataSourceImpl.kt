@@ -1,6 +1,5 @@
 package com.marazmone.crypton.data.datasource
 
-import com.marazmone.crypton.data.remote.RemoteConst
 import com.marazmone.crypton.data.remote.RemoteConst.QueryParams.IDS
 import com.marazmone.crypton.data.remote.RemoteConst.QueryParams.PRICE_CHANGE_PERCENTAGE
 import com.marazmone.crypton.data.remote.RemoteConst.QueryParams.VS_CURRENCY
@@ -18,14 +17,15 @@ class CurrencyRemoteDataSourceImpl(
         vsCurrency: String,
         priceChangePercentage: String,
         ids: String?
-    ): List<CurrencyResponse> =
-        api
-            .get(BASE) {
-                url {
-                    parameter(VS_CURRENCY, vsCurrency)
-                    parameter(PRICE_CHANGE_PERCENTAGE, priceChangePercentage)
-                    ids?.also { parameter(IDS, it) }
-                }
+    ): List<CurrencyResponse> {
+        val request = api.get(BASE.plus("coins/markets")) {
+            url {
+                parameters.append(VS_CURRENCY, vsCurrency)
+                parameters.append(PRICE_CHANGE_PERCENTAGE, priceChangePercentage)
+                ids?.also { parameters.append(IDS, it) }
             }
-            .body()
+        }
+        return request.body()
+    }
+
 }

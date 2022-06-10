@@ -8,6 +8,8 @@ fun initKoin(appDeclaration: KoinAppDeclaration = {}) = startKoin {
     appDeclaration()
     modules(
         datasourceModule,
+        repositoryModule,
+        useCaseModule,
     )
 }
 
