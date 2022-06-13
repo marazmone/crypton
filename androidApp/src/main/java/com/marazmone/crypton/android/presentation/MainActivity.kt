@@ -1,11 +1,20 @@
 package com.marazmone.crypton.android.presentation
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
-import android.widget.TextView
-import com.marazmone.crypton.android.R
-import io.github.aakira.napier.Napier
+import androidx.activity.compose.setContent
+import androidx.appcompat.app.AppCompatActivity
+import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.items
+import androidx.compose.material.Button
+import androidx.compose.material.Divider
+import androidx.compose.material.Text
+import androidx.compose.runtime.Composable
+import androidx.compose.ui.Alignment
+import androidx.compose.ui.Modifier
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class MainActivity : AppCompatActivity() {
@@ -14,10 +23,35 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        setContent {
+            MainScreen()
+        }
+    }
 
-        val tv: TextView = findViewById(R.id.text_view)
-        tv.text = "CryptoN"
-        viewModel.getAllCurrency()
+    @Composable
+    fun MainScreen() {
+        val state = viewModel.stateLiveData.value
+        Column(modifier = Modifier.fillMaxWidth()) {
+            Button(onClick = { viewModel.getAllCurrency() }) {
+                Text(text = "Refresh!")
+            }
+            Box(
+                modifier = Modifier.fillMaxSize(),
+                contentAlignment = Alignment.Center,
+            ) {
+                when {
+                    state.isLoading -> Text(text = "Loading")
+                    state.isError -> Text(text = "Error: ${state.errorText}")
+                    state.list.isNotEmpty() -> {
+                        LazyColumn {
+                            items(state.list) { item ->
+                                Text(text = item.name.orEmpty())
+                                Divider()
+                            }
+                        }
+                    }
+                }
+            }
+        }
     }
 }
