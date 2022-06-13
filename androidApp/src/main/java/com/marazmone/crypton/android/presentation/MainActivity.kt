@@ -15,11 +15,9 @@ import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import org.koin.androidx.viewmodel.ext.android.viewModel
+import org.koin.androidx.viewmodel.ext.android.getViewModel
 
 class MainActivity : AppCompatActivity() {
-
-    private val viewModel by viewModel<MainViewModel>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -29,7 +27,9 @@ class MainActivity : AppCompatActivity() {
     }
 
     @Composable
-    fun MainScreen() {
+    fun MainScreen(
+        viewModel: MainViewModel = getViewModel()
+    ) {
         val state = viewModel.stateLiveData.value
         Column(modifier = Modifier.fillMaxWidth()) {
             Button(onClick = { viewModel.getAllCurrency() }) {
