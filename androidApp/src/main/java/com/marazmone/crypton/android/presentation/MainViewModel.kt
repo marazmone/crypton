@@ -4,7 +4,7 @@ import androidx.lifecycle.viewModelScope
 import com.marazmone.crypton.android.presentation.base.BaseAction
 import com.marazmone.crypton.android.presentation.base.BaseViewModel
 import com.marazmone.crypton.android.presentation.base.BaseViewState
-import com.marazmone.crypton.data.remote.response.CurrencyResponse
+import com.marazmone.crypton.domain.model.CurrencyListItem
 import com.marazmone.crypton.domain.usecase.CurrencyGetAllUseCase
 import kotlinx.coroutines.launch
 
@@ -16,7 +16,7 @@ class MainViewModel(
         getAllCurrency()
     }
 
-    fun getAllCurrency() {
+    private fun getAllCurrency() {
         viewModelScope.launch {
             sendAction(Action.Loading)
             runCatching {
@@ -52,12 +52,12 @@ class MainViewModel(
         val isLoading: Boolean = false,
         val isError: Boolean = false,
         val errorText: String = "",
-        val list: List<CurrencyResponse> = listOf()
+        val list: List<CurrencyListItem> = listOf()
     ) : BaseViewState
 
     sealed interface Action : BaseAction {
 
-        class Success(val list: List<CurrencyResponse>) : Action
+        class Success(val list: List<CurrencyListItem>) : Action
 
         class Error(val message: String) : Action
 

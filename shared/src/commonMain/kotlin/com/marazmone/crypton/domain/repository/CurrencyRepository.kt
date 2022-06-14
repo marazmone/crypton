@@ -1,8 +1,8 @@
 package com.marazmone.crypton.domain.repository
 
-import com.marazmone.crypton.data.remote.response.CurrencyResponse
+import com.marazmone.crypton.domain.model.CurrencyListItem
 
 interface CurrencyRepository {
 
-    suspend fun getAll(): List<CurrencyResponse>
+    suspend fun getAll(): List<CurrencyListItem>
 }
