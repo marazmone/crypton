@@ -4,6 +4,7 @@ import androidx.compose.ui.graphics.Color
 
 object Main {
     val Background = Color(0xFF11124B)
+    val BackgroundSecond = Color(0xFF282864)
 }
 
 object Rate {

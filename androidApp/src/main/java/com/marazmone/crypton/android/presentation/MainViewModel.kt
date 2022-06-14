@@ -16,9 +16,9 @@ class MainViewModel(
         getAllCurrency()
     }
 
-    private fun getAllCurrency() {
+    fun getAllCurrency(withRefresh: Boolean = false) {
         viewModelScope.launch {
-            sendAction(Action.Loading)
+            if (withRefresh) sendAction(Action.Refresh) else sendAction(Action.Loading)
             runCatching {
                 currencyGetAllUseCase.execute()
             }.onSuccess {

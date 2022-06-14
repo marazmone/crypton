@@ -27,6 +27,7 @@ import coil.compose.SubcomposeAsyncImage
 import com.marazmone.crypton.android.R
 import com.marazmone.crypton.android.presentation.ui.AppTheme
 import com.marazmone.crypton.android.presentation.ui.Main.Background
+import com.marazmone.crypton.android.presentation.ui.Main.BackgroundSecond
 import com.marazmone.crypton.android.presentation.ui.component.common.PercentChangeComponent
 import com.marazmone.crypton.domain.model.CurrencyListItem
 
@@ -52,6 +53,12 @@ fun CurrencyItemComponent(
                 model = item.imageUrl,
                 loading = {
                     CircularProgressIndicator()
+                    Box(
+                        modifier = Modifier
+                            .size(40.dp)
+                            .clip(CircleShape)
+                            .background(BackgroundSecond)
+                    )
                 },
                 contentDescription = null,
                 modifier = Modifier
