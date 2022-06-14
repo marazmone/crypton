@@ -1,5 +1,8 @@
 package com.marazmone.crypton.data.remote.response
 
+import com.marazmone.crypton.data.mapper.base.Mapper
+import com.marazmone.crypton.domain.model.CurrencyListItem
+import com.marazmone.crypton.utils.orZero
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
@@ -57,4 +60,23 @@ data class CurrencyResponse(
     val priceChangePercentage1hInCurrency: Float? = null,
     @SerialName("price_change_percentage_7d_in_currency")
     val priceChangePercentage7dInCurrency: Float? = null,
-)
+) {
+
+    companion object : Mapper<CurrencyResponse, CurrencyListItem> {
+
+        override fun map(source: CurrencyResponse): CurrencyListItem =
+            source.run {
+                CurrencyListItem(
+                    id = id.orEmpty(),
+                    rank = marketCapRank.orZero,
+                    symbol = symbol.orEmpty().uppercase(),
+                    name = name.orEmpty(),
+                    percentChange24H = priceChangePercentage24h.orZero,
+                    _price = currentPrice.orZero,
+                    _mCap = marketCap.orZero,
+                    imageUrl = image.orEmpty(),
+                    isFavorite = false
+                )
+            }
+    }
+}

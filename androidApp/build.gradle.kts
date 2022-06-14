@@ -33,6 +33,8 @@ dependencies {
     implementation("androidx.appcompat:appcompat:1.4.2")
     implementation("androidx.constraintlayout:constraintlayout:2.1.4")
     implementation("androidx.activity:activity-compose:1.4.0")
+    implementation("io.coil-kt:coil-compose:2.1.0")
+    implementation("androidx.compose.material3:material3:1.0.0-alpha13")
     val lifecycle_version = "2.5.0-rc01"
     // ViewModel
     implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:$lifecycle_version")
@@ -53,8 +55,6 @@ dependencies {
     implementation("androidx.compose.ui:ui-tooling:$compose_version")
     // Foundation (Border, Background, Box, Image, Scroll, shapes, animations, etc.)
     implementation("androidx.compose.foundation:foundation:$compose_version")
-    // Material Design
-    implementation("androidx.compose.material:material:$compose_version")
     // Integration with observables
     implementation("androidx.compose.runtime:runtime-livedata:$compose_version")
 }
