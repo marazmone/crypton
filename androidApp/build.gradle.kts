@@ -58,4 +58,6 @@ dependencies {
     implementation("androidx.compose.foundation:foundation:$compose_version")
     // Integration with observables
     implementation("androidx.compose.runtime:runtime-livedata:$compose_version")
+//    implementation("com.google.accompanist:accompanist-insets:0.24.11-rc")
+//    implementation("com.google.accompanist:accompanist-insets-ui:0.24.11-rc")
 }
