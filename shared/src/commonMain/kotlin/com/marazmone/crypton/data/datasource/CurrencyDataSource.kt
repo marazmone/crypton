@@ -8,11 +8,11 @@ interface CurrencyCacheDataSource {
 
     suspend fun save(entity: CurrencyEntity)
 
-    suspend fun save(entity: List<CurrencyEntity>)
+    suspend fun save(entities: List<CurrencyEntity>)
 
     suspend fun getById(id: String): CurrencyEntity?
 
-    suspend fun getAllByLimit(limit: Int): List<CurrencyEntity>
+    suspend fun getAll(): List<CurrencyEntity>
 
     suspend fun updateFavorite(id: String, isFavorite: Boolean)
 
@@ -20,7 +20,7 @@ interface CurrencyCacheDataSource {
 
     fun observeById(id: Int): Flow<CurrencyEntity?>
 
-    fun observeAllByLimit(limit: Int): Flow<List<CurrencyEntity>>
+    fun observeAll(): Flow<List<CurrencyEntity>>
 }
 
 interface CurrencyRemoteDataSource {

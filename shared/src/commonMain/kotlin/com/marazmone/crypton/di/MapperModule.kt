@@ -8,9 +8,16 @@ import com.marazmone.crypton.domain.mapper.currency.CurrencyEntityToListItemMapp
 import com.marazmone.crypton.domain.model.CurrencyListItem
 import org.koin.core.module.dsl.bind
 import org.koin.core.module.dsl.factoryOf
+import org.koin.core.module.dsl.named
 import org.koin.dsl.module
 
 val mapperModule = module {
-    factoryOf(::CurrencyResponseToEntity) { bind<Mapper<CurrencyResponse, CurrencyEntity>>() }
-    factoryOf(::CurrencyEntityToListItemMapper) { bind<Mapper<CurrencyEntity, CurrencyListItem>>() }
+    factoryOf(::CurrencyResponseToEntity) {
+        named("1")
+        bind<Mapper<CurrencyResponse, CurrencyEntity>>()
+    }
+    factoryOf(::CurrencyEntityToListItemMapper) {
+        named("2")
+        bind<Mapper<CurrencyEntity, CurrencyListItem>>()
+    }
 }
