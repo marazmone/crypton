@@ -4,6 +4,7 @@ import com.marazmone.crypton.data.remote.RemoteConst.QueryParams.IDS
 import com.marazmone.crypton.data.remote.RemoteConst.QueryParams.PRICE_CHANGE_PERCENTAGE
 import com.marazmone.crypton.data.remote.RemoteConst.QueryParams.VS_CURRENCY
 import com.marazmone.crypton.data.remote.RemoteConst.Url.BASE
+import com.marazmone.crypton.data.remote.RemoteConst.Url.GET_ALL
 import com.marazmone.crypton.data.remote.response.CurrencyResponse
 import io.ktor.client.*
 import io.ktor.client.call.*
@@ -18,7 +19,7 @@ class CurrencyRemoteDataSourceImpl(
         priceChangePercentage: String,
         ids: String?
     ): List<CurrencyResponse> {
-        val request = api.get(BASE.plus("coins/markets")) {
+        val request = api.get(GET_ALL) {
             url {
                 parameters.append(VS_CURRENCY, vsCurrency)
                 parameters.append(PRICE_CHANGE_PERCENTAGE, priceChangePercentage)

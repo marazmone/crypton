@@ -5,6 +5,8 @@ object RemoteConst {
     object Url {
 
         const val BASE = "https://api.coingecko.com/api/v3/"
+
+        const val GET_ALL = BASE.plus("coins/markets")
     }
 
     object QueryParams {

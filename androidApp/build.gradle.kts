@@ -1,4 +1,4 @@
-val compose_version = "1.2.0-beta03"
+val composeVersion = "1.2.0-beta03"
 
 plugins {
     id("com.android.application")
@@ -16,14 +16,19 @@ android {
     }
     buildTypes {
         getByName("release") {
-            isMinifyEnabled = false
+            isMinifyEnabled = true
+            isShrinkResources = true
+            proguardFiles(
+                getDefaultProguardFile("proguard-android-optimize.txt"),
+                "proguard-rules.pro"
+            )
         }
     }
     buildFeatures {
         compose = true
     }
     composeOptions {
-        kotlinCompilerExtensionVersion = compose_version
+        kotlinCompilerExtensionVersion = composeVersion
     }
 }
 
@@ -51,13 +56,11 @@ dependencies {
     implementation("androidx.lifecycle:lifecycle-common-java8:$lifecycle_version")
     implementation(kotlin("reflect"))
 
-    implementation("androidx.compose.ui:ui:$compose_version")
+    implementation("androidx.compose.ui:ui:$composeVersion")
     // Tooling support (Previews, etc.)
-    implementation("androidx.compose.ui:ui-tooling:$compose_version")
+    implementation("androidx.compose.ui:ui-tooling:$composeVersion")
     // Foundation (Border, Background, Box, Image, Scroll, shapes, animations, etc.)
-    implementation("androidx.compose.foundation:foundation:$compose_version")
+    implementation("androidx.compose.foundation:foundation:$composeVersion")
     // Integration with observables
-    implementation("androidx.compose.runtime:runtime-livedata:$compose_version")
-//    implementation("com.google.accompanist:accompanist-insets:0.24.11-rc")
-//    implementation("com.google.accompanist:accompanist-insets-ui:0.24.11-rc")
+    implementation("androidx.compose.runtime:runtime-livedata:$composeVersion")
 }

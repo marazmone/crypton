@@ -6,14 +6,17 @@ import com.marazmone.crypton.android.presentation.base.BaseViewModel
 import com.marazmone.crypton.android.presentation.base.BaseViewState
 import com.marazmone.crypton.domain.model.CurrencyListItem
 import com.marazmone.crypton.domain.usecase.CurrencyGetAllUseCase
+import com.marazmone.crypton.domain.usecase.CurrencyObserveAllUseCase
 import kotlinx.coroutines.launch
 
 class MainViewModel(
     private val currencyGetAllUseCase: CurrencyGetAllUseCase,
+    private val currencyObserveAllUseCase: CurrencyObserveAllUseCase,
 ) : BaseViewModel<MainViewModel.ViewState, MainViewModel.Action>(ViewState()) {
 
     init {
         getAllCurrency()
+        observeAllCurrency()
     }
 
     fun getAllCurrency(withRefresh: Boolean = false) {
@@ -21,10 +24,16 @@ class MainViewModel(
             if (withRefresh) sendAction(Action.Refresh) else sendAction(Action.Loading)
             runCatching {
                 currencyGetAllUseCase.execute()
-            }.onSuccess {
-                sendAction(Action.Success(it))
             }.onFailure {
                 sendAction(Action.Error(it.message.orEmpty()))
+            }
+        }
+    }
+
+    private fun observeAllCurrency() {
+        viewModelScope.launch {
+            currencyObserveAllUseCase.execute().collect {
+                if (it.isNotEmpty()) sendAction(Action.Success(it))
             }
         }
     }
