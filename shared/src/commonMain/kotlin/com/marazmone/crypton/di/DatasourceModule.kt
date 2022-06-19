@@ -1,5 +1,7 @@
 package com.marazmone.crypton.di
 
+import com.marazmone.crypton.data.datasource.CurrencyCacheDataSource
+import com.marazmone.crypton.data.datasource.CurrencyCacheDataSourceImpl
 import com.marazmone.crypton.data.datasource.CurrencyRemoteDataSource
 import com.marazmone.crypton.data.datasource.CurrencyRemoteDataSourceImpl
 import io.github.aakira.napier.Napier
@@ -14,6 +16,7 @@ import org.koin.dsl.module
 
 val datasourceModule = module {
     singleOf(::CurrencyRemoteDataSourceImpl) { bind<CurrencyRemoteDataSource>() }
+    singleOf(::CurrencyCacheDataSourceImpl) { bind<CurrencyCacheDataSource>() }
 
     single {
         HttpClient {

@@ -5,6 +5,7 @@ plugins {
     kotlin("native.cocoapods")
     kotlin("plugin.serialization")
     id("com.android.library")
+    id("io.realm.kotlin")
 }
 
 version = "1.0"
@@ -25,11 +26,13 @@ kotlin {
         }
     }
 
-    val coroutinesVersion = "1.6.1-native-mt"
+    val coroutinesVersion = "1.6.2"
     val serializationVersion = "1.3.3"
     val ktorVersion = "2.0.2"
     val koinVersion = "3.2.0"
     val napierVersion = "2.6.1"
+    val realVersion = "1.0.0"
+    val dateTimeVersion = "0.3.2"
 
     sourceSets {
         val commonMain by getting {
@@ -42,6 +45,8 @@ kotlin {
                 implementation("io.ktor:ktor-client-logging:$ktorVersion")
                 implementation("io.ktor:ktor-serialization-kotlinx-json:$ktorVersion")
                 implementation("io.insert-koin:koin-core:$koinVersion")
+                implementation("io.realm.kotlin:library-base:$realVersion")
+                implementation("org.jetbrains.kotlinx:kotlinx-datetime:$dateTimeVersion")
                 api("io.github.aakira:napier:$napierVersion")
             }
         }
