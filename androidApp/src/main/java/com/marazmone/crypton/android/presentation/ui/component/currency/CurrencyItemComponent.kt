@@ -95,12 +95,9 @@ fun CurrencyItemComponent(
         ) {
             PercentChangeComponent(
                 percentChange = item.percentChange24H,
-                verticalAlignment = Alignment.CenterVertically,
-                horizontalArrangement = Arrangement.Start,
-                textStyle = MaterialTheme.typography.labelMedium,
                 modifier = Modifier
                     .weight(1f)
-                    .padding(start = 24.dp)
+                    .padding(start = 12.dp)
             )
             Column(
                 horizontalAlignment = Alignment.End,
@@ -120,7 +117,7 @@ fun CurrencyItemComponent(
 
 @Preview(showBackground = true)
 @Composable
-fun CurrencyItemUPPreview() {
+fun CurrencyItem_UP_Preview() {
     AppTheme {
         CurrencyItemComponent(
             CurrencyListItem(
@@ -140,7 +137,7 @@ fun CurrencyItemUPPreview() {
 
 @Preview(showBackground = true)
 @Composable
-fun CurrencyItemDownPreview() {
+fun CurrencyItem_DOWN_Preview() {
     AppTheme {
         CurrencyItemComponent(
             CurrencyListItem(
