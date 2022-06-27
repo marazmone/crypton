@@ -14,8 +14,10 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.rotate
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.TextStyle
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.marazmone.crypton.android.R
+import com.marazmone.crypton.android.presentation.ui.AppTheme
 import com.marazmone.crypton.android.presentation.ui.Rate.Down
 import com.marazmone.crypton.android.presentation.ui.Rate.Up
 import com.marazmone.crypton.utils.amountWithCurrency
@@ -25,7 +27,7 @@ fun PercentChangeComponent(
     percentChange: Float,
     modifier: Modifier = Modifier,
     horizontalArrangement: Arrangement.Horizontal = Arrangement.Start,
-    verticalAlignment: Alignment.Vertical = Alignment.Top,
+    verticalAlignment: Alignment.Vertical = Alignment.CenterVertically,
     textStyle: TextStyle = MaterialTheme.typography.labelMedium
 ) {
     val rateColor = if (percentChange < 0f) Down else Up
@@ -49,5 +51,21 @@ fun PercentChangeComponent(
             text = formattedText,
             style = textStyle.copy(color = rateColor)
         )
+    }
+}
+
+@Preview(showBackground = true)
+@Composable
+fun PercentChangeComponent_UP_Preview() {
+    AppTheme {
+        PercentChangeComponent(percentChange = 10.33f)
+    }
+}
+
+@Preview(showBackground = true)
+@Composable
+fun PercentChangeComponent_DOWN_Preview() {
+    AppTheme {
+        PercentChangeComponent(percentChange = -10.22f)
     }
 }
