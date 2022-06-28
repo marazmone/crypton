@@ -1,4 +1,4 @@
-package com.marazmone.crypton.android.presentation
+package com.marazmone.crypton.android.presentation.screen.list
 
 import androidx.lifecycle.viewModelScope
 import com.marazmone.crypton.android.presentation.base.BaseAction
@@ -9,10 +9,10 @@ import com.marazmone.crypton.domain.usecase.CurrencyGetAllUseCase
 import com.marazmone.crypton.domain.usecase.CurrencyObserveAllUseCase
 import kotlinx.coroutines.launch
 
-class MainViewModel(
+class CurrencyListViewModel(
     private val currencyGetAllUseCase: CurrencyGetAllUseCase,
     private val currencyObserveAllUseCase: CurrencyObserveAllUseCase,
-) : BaseViewModel<MainViewModel.ViewState, MainViewModel.Action>(ViewState()) {
+) : BaseViewModel<CurrencyListViewModel.ViewState, CurrencyListViewModel.Action>(ViewState()) {
 
     init {
         getAllCurrency()

@@ -1,4 +1,4 @@
-val composeVersion = "1.2.0-beta03"
+val composeVersion = "1.2.0-rc02"
 
 plugins {
     id("com.android.application")
@@ -63,4 +63,11 @@ dependencies {
     implementation("androidx.compose.foundation:foundation:$composeVersion")
     // Integration with observables
     implementation("androidx.compose.runtime:runtime-livedata:$composeVersion")
+
+    val koinVersion = "3.2.0"
+    implementation("io.insert-koin:koin-android:$koinVersion")
+    implementation("io.insert-koin:koin-androidx-compose:$koinVersion")
+
+    val navVersion = "2.4.2"
+    implementation("androidx.navigation:navigation-compose:$navVersion")
 }

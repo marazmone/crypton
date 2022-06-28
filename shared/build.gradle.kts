@@ -58,7 +58,6 @@ kotlin {
         val androidMain by getting {
             dependencies {
                 implementation("io.ktor:ktor-client-android:$ktorVersion")
-                api("io.insert-koin:koin-android:$koinVersion")
             }
         }
         val androidTest by getting
