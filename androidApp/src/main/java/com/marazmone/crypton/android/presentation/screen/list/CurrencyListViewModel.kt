@@ -4,7 +4,7 @@ import androidx.lifecycle.viewModelScope
 import com.marazmone.crypton.android.presentation.base.BaseAction
 import com.marazmone.crypton.android.presentation.base.BaseViewModel
 import com.marazmone.crypton.android.presentation.base.BaseViewState
-import com.marazmone.crypton.domain.model.CurrencyListItem
+import com.marazmone.crypton.domain.model.currency.CurrencyListItem
 import com.marazmone.crypton.domain.usecase.CurrencyGetAllUseCase
 import com.marazmone.crypton.domain.usecase.CurrencyObserveAllUseCase
 import kotlinx.coroutines.launch

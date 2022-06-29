@@ -13,5 +13,6 @@ val Long.secToMs get() = this * 1000
 
 val Long.msToSec get() = this / 1000
 
-fun Float.amountWithCurrency(currency: String = USD): String =
-    KDecimalFormat.coolNumber(this).plus(currency)
+val Float.coolNumber: String get() = KDecimalFormat.coolNumber(this)
+
+fun Float.amountWithCurrency(currency: String = USD): String = coolNumber.plus(currency)

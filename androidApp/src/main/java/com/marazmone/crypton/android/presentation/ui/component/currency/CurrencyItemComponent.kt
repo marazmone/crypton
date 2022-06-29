@@ -29,7 +29,7 @@ import com.marazmone.crypton.android.presentation.ui.AppTheme
 import com.marazmone.crypton.android.presentation.ui.Main.Background
 import com.marazmone.crypton.android.presentation.ui.Main.BackgroundSecond
 import com.marazmone.crypton.android.presentation.ui.component.common.PercentChangeComponent
-import com.marazmone.crypton.domain.model.CurrencyListItem
+import com.marazmone.crypton.domain.model.currency.CurrencyListItem
 
 @Composable
 fun CurrencyItemComponent(

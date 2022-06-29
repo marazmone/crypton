@@ -15,12 +15,12 @@ import com.marazmone.crypton.android.presentation.ui.AppTheme
 import com.marazmone.crypton.android.presentation.ui.Main
 import com.marazmone.crypton.android.presentation.ui.component.currency.CurrencyItemComponent
 import com.marazmone.crypton.android.presentation.util.PaddingValuesVertical
-import com.marazmone.crypton.domain.model.CurrencyListItem
+import com.marazmone.crypton.domain.model.currency.CurrencyListItem
 import kotlin.random.Random
 
 @Preview(showBackground = true)
 @Composable
-fun SuccessStatePreview() {
+private fun SuccessStatePreview() {
     val resultList = List(100) {
         CurrencyListItem(
             id = Random.nextInt().toString(),
@@ -53,7 +53,7 @@ fun SuccessStatePreview() {
 
 @Preview(showBackground = true)
 @Composable
-fun LoadingStatePreview() {
+private fun LoadingStatePreview() {
     AppTheme {
         Box(
             modifier = Modifier
@@ -68,7 +68,7 @@ fun LoadingStatePreview() {
 
 @Preview(showBackground = true)
 @Composable
-fun ErrorStatePreview() {
+private fun ErrorStatePreview() {
     AppTheme {
         Box(
             modifier = Modifier
