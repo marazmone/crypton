@@ -4,12 +4,14 @@ import androidx.activity.compose.BackHandler
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.navigation.NavController
+import com.marazmone.crypton.android.presentation.ui.component.currency.CurrencyDetailPriceComponent
 import com.marazmone.crypton.android.presentation.ui.component.currency.CurrencyToolbarComponent
 import org.koin.androidx.compose.getViewModel
 
@@ -29,28 +31,31 @@ fun CurrencyDetailScreen(
         navController.popBackStack()
     }
 
-    Box(
-        contentAlignment = Alignment.Center,
-        modifier = Modifier.fillMaxSize(),
-    ) {
-        when {
-            state.isError -> {
-                Text(text = "Error")
-            }
-            state.data != null -> {
-                Column(
-                    modifier = Modifier.fillMaxSize()
-                ) {
-                    CurrencyToolbarComponent(
-                        model = state.data,
-                        onCloseAction = {
-                            navController.popBackStack()
-                        },
-                        onChangeFavoriteAction = {
-                            viewModel.setFavorite(id, it)
-                        }
-                    )
+    when {
+        state.data != null -> {
+            Column(
+                modifier = Modifier.fillMaxSize()
+            ) {
+                CurrencyToolbarComponent(
+                    model = state.data,
+                    onCloseAction = {
+                        navController.popBackStack()
+                    },
+                    onChangeFavoriteAction = {
+                        viewModel.setFavorite(id, it)
+                    }
+                )
+                LazyColumn {
+                    item { CurrencyDetailPriceComponent(state.data) }
                 }
+            }
+        }
+        state.isError -> {
+            Box(
+                contentAlignment = Alignment.Center,
+                modifier = Modifier.fillMaxSize(),
+            ) {
+                Text(text = "Error")
             }
         }
     }

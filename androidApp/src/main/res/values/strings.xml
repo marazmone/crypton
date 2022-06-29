@@ -1,4 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="market_cap">MCap:</string>
+    <string name="percent_change_1h">1H</string>
+    <string name="percent_change_1d">1D</string>
+    <string name="percent_change_1w">1W</string>
 </resources>
