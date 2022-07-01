@@ -28,7 +28,8 @@ import androidx.compose.ui.unit.dp
 import coil.compose.SubcomposeAsyncImage
 import com.marazmone.crypton.android.R
 import com.marazmone.crypton.android.presentation.ui.AppTheme
-import com.marazmone.crypton.android.presentation.ui.Main
+import com.marazmone.crypton.android.presentation.ui.Colors.Main.Background
+import com.marazmone.crypton.android.presentation.ui.Colors.Main.BackgroundSecond
 import com.marazmone.crypton.domain.model.currency.CurrencyDetail
 
 @Composable
@@ -75,7 +76,7 @@ fun CurrencyToolbarComponent(
                         modifier = Modifier
                             .size(40.dp)
                             .clip(CircleShape)
-                            .background(Main.BackgroundSecond)
+                            .background(BackgroundSecond)
                     )
                 },
                 contentDescription = null,
@@ -104,7 +105,7 @@ fun CurrencyToolbarComponent(
 @Composable
 private fun CurrencyToolbarComponentPreview() {
     AppTheme {
-        Box(modifier = Modifier.background(Main.Background)) {
+        Box(modifier = Modifier.background(Background)) {
             CurrencyToolbarComponent(model = CurrencyDetail.empty)
         }
     }

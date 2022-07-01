@@ -21,8 +21,8 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.marazmone.crypton.android.R
 import com.marazmone.crypton.android.presentation.ui.AppTheme
-import com.marazmone.crypton.android.presentation.ui.Rate.Down
-import com.marazmone.crypton.android.presentation.ui.Rate.Up
+import com.marazmone.crypton.android.presentation.ui.Colors.Rate.Down
+import com.marazmone.crypton.android.presentation.ui.Colors.Rate.Up
 import com.marazmone.crypton.utils.amountWithCurrency
 
 @Composable

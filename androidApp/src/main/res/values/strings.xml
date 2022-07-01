@@ -4,4 +4,12 @@
     <string name="percent_change_1h">1H</string>
     <string name="percent_change_1d">1D</string>
     <string name="percent_change_1w">1W</string>
+    <string name="key_figures">Key numbers</string>
+    <string name="market_cap_full">Market cap</string>
+    <string name="symbol">Symbol</string>
+    <string name="rank">Rating</string>
+    <string name="supply">Supply:</string>
+    <string name="supply_circulating">Circulating</string>
+    <string name="supply_max">Max</string>
+    <string name="supply_total">Total</string>
 </resources>
