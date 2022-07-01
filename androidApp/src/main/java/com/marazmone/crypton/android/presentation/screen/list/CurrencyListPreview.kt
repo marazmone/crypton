@@ -12,7 +12,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import com.marazmone.crypton.android.presentation.ui.AppTheme
-import com.marazmone.crypton.android.presentation.ui.Main
+import com.marazmone.crypton.android.presentation.ui.Colors.Main.Background
 import com.marazmone.crypton.android.presentation.ui.component.currency.CurrencyItemComponent
 import com.marazmone.crypton.android.presentation.util.PaddingValuesVertical
 import com.marazmone.crypton.domain.model.currency.CurrencyListItem
@@ -58,7 +58,7 @@ private fun LoadingStatePreview() {
         Box(
             modifier = Modifier
                 .fillMaxSize()
-                .background(Main.Background),
+                .background(Background),
             contentAlignment = Alignment.Center,
         ) {
             CircularProgressIndicator()
@@ -73,7 +73,7 @@ private fun ErrorStatePreview() {
         Box(
             modifier = Modifier
                 .fillMaxSize()
-                .background(Main.Background),
+                .background(Background),
             contentAlignment = Alignment.Center,
         ) {
             Text(text = "Error: test error")

@@ -3,7 +3,6 @@ package com.marazmone.crypton.android.presentation.screen
 import android.os.Bundle
 import androidx.activity.compose.setContent
 import androidx.appcompat.app.AppCompatActivity
-import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material3.Surface
 import androidx.compose.runtime.Composable
@@ -18,7 +17,7 @@ import com.marazmone.crypton.android.presentation.navigation.NavScreen
 import com.marazmone.crypton.android.presentation.screen.detail.CurrencyDetailScreen
 import com.marazmone.crypton.android.presentation.screen.list.CurrencyListScreen
 import com.marazmone.crypton.android.presentation.ui.AppTheme
-import com.marazmone.crypton.android.presentation.ui.Main
+import com.marazmone.crypton.android.presentation.ui.Colors.Main.Background
 
 
 class MainActivity : AppCompatActivity() {
@@ -29,7 +28,7 @@ class MainActivity : AppCompatActivity() {
         setContent {
             AppTheme {
                 Surface(
-                    color = Main.Background,
+                    color = Background,
                     modifier = Modifier.fillMaxSize(),
                 ) {
                     MainScreen()

@@ -11,7 +11,8 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import com.marazmone.crypton.android.presentation.ui.AppTheme
-import com.marazmone.crypton.android.presentation.ui.Main
+import com.marazmone.crypton.android.presentation.ui.Colors.Main.Background
+import com.marazmone.crypton.android.presentation.ui.component.currency.CurrencyDetailKeyFiguresComponent
 import com.marazmone.crypton.android.presentation.ui.component.currency.CurrencyDetailPriceComponent
 import com.marazmone.crypton.android.presentation.ui.component.currency.CurrencyToolbarComponent
 import com.marazmone.crypton.domain.model.currency.CurrencyDetail
@@ -24,11 +25,12 @@ private fun SuccessStatePreview() {
         Column(
             modifier = Modifier
                 .fillMaxSize()
-                .background(Main.Background),
+                .background(Background),
         ) {
             CurrencyToolbarComponent(model)
             LazyColumn {
                 item { CurrencyDetailPriceComponent(model) }
+                item { CurrencyDetailKeyFiguresComponent(model) }
             }
         }
     }
@@ -42,7 +44,7 @@ private fun ErrorStatePreview() {
             contentAlignment = Alignment.Center,
             modifier = Modifier
                 .fillMaxSize()
-                .background(Main.Background),
+                .background(Background),
         ) {
             Text(text = "Error")
         }
