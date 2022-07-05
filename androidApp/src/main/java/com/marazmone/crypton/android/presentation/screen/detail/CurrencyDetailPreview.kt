@@ -13,6 +13,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import com.marazmone.crypton.android.presentation.ui.AppTheme
 import com.marazmone.crypton.android.presentation.ui.Colors.Main.Background
 import com.marazmone.crypton.android.presentation.ui.component.currency.CurrencyDetailKeyFiguresComponent
+import com.marazmone.crypton.android.presentation.ui.component.currency.CurrencyDetailOtherInfoComponent
 import com.marazmone.crypton.android.presentation.ui.component.currency.CurrencyDetailPriceComponent
 import com.marazmone.crypton.android.presentation.ui.component.currency.CurrencyToolbarComponent
 import com.marazmone.crypton.domain.model.currency.CurrencyDetail
@@ -31,6 +32,7 @@ private fun SuccessStatePreview() {
             LazyColumn {
                 item { CurrencyDetailPriceComponent(model) }
                 item { CurrencyDetailKeyFiguresComponent(model) }
+                item { CurrencyDetailOtherInfoComponent(model) }
             }
         }
     }

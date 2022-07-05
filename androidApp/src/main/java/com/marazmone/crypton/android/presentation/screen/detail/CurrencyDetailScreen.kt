@@ -12,6 +12,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.navigation.NavController
 import com.marazmone.crypton.android.presentation.ui.component.currency.CurrencyDetailKeyFiguresComponent
+import com.marazmone.crypton.android.presentation.ui.component.currency.CurrencyDetailOtherInfoComponent
 import com.marazmone.crypton.android.presentation.ui.component.currency.CurrencyDetailPriceComponent
 import com.marazmone.crypton.android.presentation.ui.component.currency.CurrencyToolbarComponent
 import org.koin.androidx.compose.getViewModel
@@ -49,6 +50,7 @@ fun CurrencyDetailScreen(
                 LazyColumn {
                     item { CurrencyDetailPriceComponent(state.data) }
                     item { CurrencyDetailKeyFiguresComponent(state.data) }
+                    item { CurrencyDetailOtherInfoComponent(state.data) }
                 }
             }
         }
