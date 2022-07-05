@@ -2,7 +2,7 @@ package com.marazmone.crypton.domain.mapper.currency
 
 import com.marazmone.crypton.data.cache.entity.CurrencyEntity
 import com.marazmone.crypton.data.mapper.base.Mapper
-import com.marazmone.crypton.domain.model.CurrencyListItem
+import com.marazmone.crypton.domain.model.currency.CurrencyListItem
 import com.marazmone.crypton.utils.orZero
 
 class CurrencyEntityToListItemMapper : Mapper<CurrencyEntity, CurrencyListItem> {

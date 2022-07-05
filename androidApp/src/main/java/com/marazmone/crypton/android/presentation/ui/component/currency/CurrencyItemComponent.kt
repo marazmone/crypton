@@ -26,10 +26,10 @@ import androidx.compose.ui.unit.dp
 import coil.compose.SubcomposeAsyncImage
 import com.marazmone.crypton.android.R
 import com.marazmone.crypton.android.presentation.ui.AppTheme
-import com.marazmone.crypton.android.presentation.ui.Main.Background
-import com.marazmone.crypton.android.presentation.ui.Main.BackgroundSecond
+import com.marazmone.crypton.android.presentation.ui.Colors.Main.Background
+import com.marazmone.crypton.android.presentation.ui.Colors.Main.BackgroundSecond
 import com.marazmone.crypton.android.presentation.ui.component.common.PercentChangeComponent
-import com.marazmone.crypton.domain.model.CurrencyListItem
+import com.marazmone.crypton.domain.model.currency.CurrencyListItem
 
 @Composable
 fun CurrencyItemComponent(

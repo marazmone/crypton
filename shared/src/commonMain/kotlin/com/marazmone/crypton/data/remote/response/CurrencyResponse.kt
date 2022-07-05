@@ -1,8 +1,5 @@
 package com.marazmone.crypton.data.remote.response
 
-import com.marazmone.crypton.data.mapper.base.Mapper
-import com.marazmone.crypton.domain.model.CurrencyListItem
-import com.marazmone.crypton.utils.orZero
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 

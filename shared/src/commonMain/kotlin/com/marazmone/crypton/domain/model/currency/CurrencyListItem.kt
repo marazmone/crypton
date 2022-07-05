@@ -1,4 +1,4 @@
-package com.marazmone.crypton.domain.model
+package com.marazmone.crypton.domain.model.currency
 
 import com.marazmone.crypton.utils.amountWithCurrency
 import com.marazmone.crypton.utils.format.KDecimalFormat

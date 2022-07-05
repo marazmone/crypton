@@ -29,10 +29,11 @@ class CurrencyCacheDataSourceImpl(
         realm.query<CurrencyEntity>().find().sortedBy { it.cmcRank }
 
     override suspend fun updateFavorite(id: String, isFavorite: Boolean) {
-        val currentEntity = getById(id)
-        requireNotNull(currentEntity) { "updateFavorite: currentEntity is null" }
-        currentEntity.isFavorite = isFavorite
-        save(currentEntity)
+        realm.write {
+            val currentEntity = query<CurrencyEntity>("id == $0", id).find().firstOrNull()
+            requireNotNull(currentEntity) { "updateFavorite: currentEntity is null" }
+            currentEntity.isFavorite = isFavorite
+        }
     }
 
     override suspend fun getAllFavorite(): List<CurrencyEntity> =

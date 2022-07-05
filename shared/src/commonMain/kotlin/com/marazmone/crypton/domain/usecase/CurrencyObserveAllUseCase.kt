@@ -1,6 +1,6 @@
 package com.marazmone.crypton.domain.usecase
 
-import com.marazmone.crypton.domain.model.CurrencyListItem
+import com.marazmone.crypton.domain.model.currency.CurrencyListItem
 import com.marazmone.crypton.domain.repository.CurrencyRepository
 import kotlinx.coroutines.flow.Flow
 
