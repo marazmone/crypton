@@ -1,13 +1,12 @@
-package com.marazmone.crypton.android.presentation.screen.detail
+package com.marazmone.crypton.android.presentation.screen.currency.detail
 
-import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.marazmone.crypton.android.presentation.base.BaseAction
 import com.marazmone.crypton.android.presentation.base.BaseViewModel
 import com.marazmone.crypton.android.presentation.base.BaseViewState
 import com.marazmone.crypton.domain.model.currency.CurrencyDetail
-import com.marazmone.crypton.domain.usecase.CurrencyGetByIdUseCase
-import com.marazmone.crypton.domain.usecase.CurrencySetFavoriteByIdUseCase
+import com.marazmone.crypton.domain.usecase.currency.CurrencyGetByIdUseCase
+import com.marazmone.crypton.domain.usecase.currency.CurrencySetFavoriteByIdUseCase
 import kotlinx.coroutines.launch
 
 class CurrencyDetailViewModel(

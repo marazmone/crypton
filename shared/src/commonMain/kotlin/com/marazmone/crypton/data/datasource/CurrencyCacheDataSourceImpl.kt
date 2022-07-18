@@ -18,7 +18,15 @@ class CurrencyCacheDataSourceImpl(
     }
 
     override suspend fun save(entities: List<CurrencyEntity>) {
-        realm.write { entities.forEach(::insertOrUpdate) }
+        realm.write {
+            entities.forEach { newEntity ->
+                val currentEntity = query<CurrencyEntity>("id == $0", newEntity.id).find().firstOrNull()
+                if (currentEntity != null) {
+                    newEntity.isFavorite = currentEntity.isFavorite
+                }
+                insertOrUpdate(newEntity)
+            }
+        }
     }
 
     override suspend fun getById(id: String): CurrencyEntity? =
@@ -48,6 +56,13 @@ class CurrencyCacheDataSourceImpl(
 
     override fun observeAll(): Flow<List<CurrencyEntity>> =
         realm.query<CurrencyEntity>().find().asFlow().map { change ->
+            when (change) {
+                is InitialResults, is UpdatedResults -> change.list.sortedBy { it.cmcRank }
+            }
+        }
+
+    override fun observeAllFavorite(): Flow<List<CurrencyEntity>> =
+        realm.query<CurrencyEntity>("isFavorite == $0", true).find().asFlow().map { change ->
             when (change) {
                 is InitialResults, is UpdatedResults -> change.list.sortedBy { it.cmcRank }
             }

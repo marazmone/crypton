@@ -5,7 +5,6 @@ import com.marazmone.crypton.data.datasource.CurrencyCacheDataSource
 import com.marazmone.crypton.data.datasource.CurrencyRemoteDataSource
 import com.marazmone.crypton.data.mapper.base.Mapper
 import com.marazmone.crypton.data.remote.response.CurrencyResponse
-import com.marazmone.crypton.domain.mapper.currency.CurrencyEntityToDetailMapper
 import com.marazmone.crypton.domain.model.currency.CurrencyDetail
 import com.marazmone.crypton.domain.model.currency.CurrencyListItem
 import com.marazmone.crypton.domain.repository.CurrencyRepository
@@ -27,12 +26,22 @@ class CurrencyRepositoryImpl(
         return entityToListItemMapper.listAsync(entities)
     }
 
-    override fun observeAll(): Flow<List<CurrencyListItem>> =
-        cache.observeAll().map { entityToListItemMapper.listAsync(it) }
-
     override suspend fun getCurrencyById(id: String): CurrencyDetail? =
-        cache.getById(id)?.let { entityToDetailMapper.map(it) }
+        cache.getById(id)?.let { entityToDetailMapper.mapAsync(it) }
 
     override suspend fun updateFavorite(id: String, isFavorite: Boolean) =
         cache.updateFavorite(id, isFavorite)
+
+    override suspend fun updateByIds(ids: List<String>): List<CurrencyListItem> {
+        val remote =  remote.getAll(ids = ids.joinToString(","))
+        val entities = responseToEntityMapper.listAsync(remote)
+        cache.save(entities)
+        return entityToListItemMapper.listAsync(entities)
+    }
+
+    override fun observeAll(): Flow<List<CurrencyListItem>> =
+        cache.observeAll().map { entityToListItemMapper.listAsync(it) }
+
+    override fun observeAllFavorite(): Flow<List<CurrencyListItem>> =
+        cache.observeAllFavorite().map { entityToListItemMapper.listAsync(it) }
 }

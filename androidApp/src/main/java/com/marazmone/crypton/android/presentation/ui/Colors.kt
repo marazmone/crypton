@@ -6,6 +6,7 @@ object Colors {
     object Main {
         val Background = Color(0xFF11124B)
         val BackgroundSecond = Color(0xFF282864)
+        val BottomNavigationBarSelectedItem = Color(0xFF5BA5F5)
     }
 
     object Rate {

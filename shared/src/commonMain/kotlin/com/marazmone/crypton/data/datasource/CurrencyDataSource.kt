@@ -21,6 +21,8 @@ interface CurrencyCacheDataSource {
     fun observeById(id: Int): Flow<CurrencyEntity?>
 
     fun observeAll(): Flow<List<CurrencyEntity>>
+
+    fun observeAllFavorite(): Flow<List<CurrencyEntity>>
 }
 
 interface CurrencyRemoteDataSource {

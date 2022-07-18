@@ -32,12 +32,10 @@ android {
 
 dependencies {
     implementation(project(":shared"))
-    implementation("com.google.android.material:material:1.6.1")
     implementation("androidx.appcompat:appcompat:1.4.2")
-    implementation("androidx.constraintlayout:constraintlayout:2.1.4")
-    implementation("androidx.activity:activity-compose:1.4.0")
+    implementation("androidx.activity:activity-compose:1.5.0")
     implementation("io.coil-kt:coil-compose:2.1.0")
-    implementation("androidx.compose.material3:material3:1.0.0-alpha13")
+    implementation("androidx.compose.material3:material3:1.0.0-alpha14")
     implementation("com.google.accompanist:accompanist-swiperefresh:0.24.10-beta")
     val lifecycleVersion = "2.5.0-rc01"
     implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:$lifecycleVersion")

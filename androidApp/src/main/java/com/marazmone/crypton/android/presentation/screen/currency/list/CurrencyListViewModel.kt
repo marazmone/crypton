@@ -1,12 +1,12 @@
-package com.marazmone.crypton.android.presentation.screen.list
+package com.marazmone.crypton.android.presentation.screen.currency.list
 
 import androidx.lifecycle.viewModelScope
 import com.marazmone.crypton.android.presentation.base.BaseAction
 import com.marazmone.crypton.android.presentation.base.BaseViewModel
 import com.marazmone.crypton.android.presentation.base.BaseViewState
 import com.marazmone.crypton.domain.model.currency.CurrencyListItem
-import com.marazmone.crypton.domain.usecase.CurrencyGetAllUseCase
-import com.marazmone.crypton.domain.usecase.CurrencyObserveAllUseCase
+import com.marazmone.crypton.domain.usecase.currency.CurrencyGetAllUseCase
+import com.marazmone.crypton.domain.usecase.currency.CurrencyObserveAllUseCase
 import kotlinx.coroutines.launch
 
 class CurrencyListViewModel(

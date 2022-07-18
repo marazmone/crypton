@@ -12,5 +12,9 @@ interface CurrencyRepository {
 
     suspend fun updateFavorite(id: String, isFavorite: Boolean)
 
+    suspend fun updateByIds(ids: List<String>): List<CurrencyListItem>
+
     fun observeAll(): Flow<List<CurrencyListItem>>
+
+    fun observeAllFavorite(): Flow<List<CurrencyListItem>>
 }

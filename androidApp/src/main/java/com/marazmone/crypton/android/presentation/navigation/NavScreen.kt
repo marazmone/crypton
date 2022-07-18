@@ -2,8 +2,6 @@ package com.marazmone.crypton.android.presentation.navigation
 
 sealed class NavScreen(val route: String) {
 
-    object CurrencyList: NavScreen("currency_list")
-
     object CurrencyDetail : NavScreen("currency_detail/{${Arguments.CURRENCY_DETAIL_ID}}") {
 
         fun createRoute(currencyId: String) = "currency_detail/$currencyId"

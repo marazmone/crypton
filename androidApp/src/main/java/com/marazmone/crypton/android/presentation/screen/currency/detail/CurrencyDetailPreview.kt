@@ -1,4 +1,4 @@
-package com.marazmone.crypton.android.presentation.screen.detail
+package com.marazmone.crypton.android.presentation.screen.currency.detail
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box

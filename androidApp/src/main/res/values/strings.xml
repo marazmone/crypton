@@ -17,4 +17,6 @@
     <string name="detail_other_info_ath">Absolute maximum</string>
     <string name="detail_other_info_atl">Absolute minimum</string>
     <string name="detail_other_info_trading_volume">Traded Volume</string>
+    <string name="menu_home">Dashboard</string>
+    <string name="menu_favorite">Favorite</string>
 </resources>
