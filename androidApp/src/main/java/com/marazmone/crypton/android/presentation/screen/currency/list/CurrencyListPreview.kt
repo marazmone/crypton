@@ -1,4 +1,4 @@
-package com.marazmone.crypton.android.presentation.screen.list
+package com.marazmone.crypton.android.presentation.screen.currency.list
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
@@ -16,25 +16,10 @@ import com.marazmone.crypton.android.presentation.ui.Colors.Main.Background
 import com.marazmone.crypton.android.presentation.ui.component.currency.CurrencyItemComponent
 import com.marazmone.crypton.android.presentation.util.PaddingValuesVertical
 import com.marazmone.crypton.domain.model.currency.CurrencyListItem
-import kotlin.random.Random
 
 @Preview(showBackground = true)
 @Composable
 private fun SuccessStatePreview() {
-    val resultList = List(100) {
-        CurrencyListItem(
-            id = Random.nextInt().toString(),
-            name = "Currency name",
-            symbol = "SML",
-            rank = it.plus(1),
-            percentChange24H = Random.nextDouble(-90.0, 90.0).toFloat(),
-            _price = Random.nextDouble(1.0, 50_000.0).toFloat(),
-            _mCap = Random.nextDouble(100_000_000.0, 10_000_000_000.0).toFloat(),
-            isFavorite = Random.nextBoolean(),
-            imageUrl = "",
-        )
-    }
-
     AppTheme {
         Box(
             modifier = Modifier
@@ -43,7 +28,7 @@ private fun SuccessStatePreview() {
             LazyColumn(
                 contentPadding = PaddingValuesVertical()
             ) {
-                items(resultList.sortedBy { it.rank }) { item ->
+                items(CurrencyListItem.emptyList().sortedBy { it.rank }) { item ->
                     CurrencyItemComponent(item = item)
                 }
             }

@@ -1,7 +1,6 @@
-package com.marazmone.crypton.domain.usecase
+package com.marazmone.crypton.domain.usecase.currency
 
 import com.marazmone.crypton.domain.model.currency.CurrencyDetail
-import com.marazmone.crypton.domain.model.currency.CurrencyListItem
 import com.marazmone.crypton.domain.repository.CurrencyRepository
 
 class CurrencyGetByIdUseCase(
