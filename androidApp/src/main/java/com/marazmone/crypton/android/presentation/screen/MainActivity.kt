@@ -173,7 +173,7 @@ class MainActivity : AppCompatActivity() {
                             alwaysShowLabel = false,
                             colors = NavigationBarItemDefaults.colors(
                                 unselectedIconColor = Color.White,
-                                indicatorColor = Colors.Main.BottomNavigationBarSelectedItem
+                                indicatorColor = Colors.Main.Button
                             )
                         )
                     }
