@@ -19,4 +19,7 @@
     <string name="detail_other_info_trading_volume">Traded Volume</string>
     <string name="menu_home">Dashboard</string>
     <string name="menu_favorite">Favorite</string>
+    <string name="something_wrong">Something went wrong, please try again later</string>
+    <string name="repeat">Repeat</string>
+    <string name="favorite_empty_state">You don\'t have any\nfavorite cryptocurrency yet!\nTime to do it!</string>
 </resources>

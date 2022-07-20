@@ -5,15 +5,16 @@ import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
-import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.stringResource
 import androidx.navigation.NavController
 import com.google.accompanist.swiperefresh.SwipeRefresh
 import com.google.accompanist.swiperefresh.rememberSwipeRefreshState
+import com.marazmone.crypton.android.R
 import com.marazmone.crypton.android.presentation.navigation.NavScreen
 import com.marazmone.crypton.android.presentation.ui.component.currency.CurrencyItemComponent
+import com.marazmone.crypton.android.presentation.ui.component.state.ImageWithTextActionStateComponent
 import com.marazmone.crypton.android.presentation.util.PaddingValuesVertical
 import org.koin.androidx.compose.getViewModel
 
@@ -28,24 +29,21 @@ fun CurrencyFavoriteScreen(
         onRefresh = { viewModel.updateByIds() },
     ) {
         Box(
-            modifier = Modifier.fillMaxSize(),
+            modifier = Modifier
+                .fillMaxSize(),
         ) {
             when {
                 state.isError -> {
-                    Box(
-                        contentAlignment = Alignment.Center,
-                        modifier = Modifier.fillMaxSize(),
-                    ) {
-                        Text(text = "Error: ${state.errorText}")
-                    }
+                    ImageWithTextActionStateComponent(
+                        resId = R.drawable.im_error_state,
+                        text = state.errorText
+                    )
                 }
                 state.list.isEmpty() -> {
-                    Box(
-                        contentAlignment = Alignment.Center,
-                        modifier = Modifier.fillMaxSize(),
-                    ) {
-                        Text(text = "Favorite list is empty.\nPlease select any currency.")
-                    }
+                    ImageWithTextActionStateComponent(
+                        resId = R.drawable.im_empty_state,
+                        text = stringResource(id = R.string.favorite_empty_state)
+                    )
                 }
                 else -> {
                     LazyColumn(
