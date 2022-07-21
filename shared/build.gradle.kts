@@ -58,6 +58,7 @@ kotlin {
         val androidMain by getting {
             dependencies {
                 implementation("io.ktor:ktor-client-android:$ktorVersion")
+                api("org.jetbrains.kotlinx:kotlinx-serialization-json:$serializationVersion")
             }
         }
         val androidTest by getting

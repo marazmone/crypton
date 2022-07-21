@@ -1,6 +1,7 @@
 package com.marazmone.crypton.android
 
 import android.app.Application
+import com.marazmone.crypton.android.di.notificationModule
 import com.marazmone.crypton.android.di.viewModelModule
 import com.marazmone.crypton.di.initKoin
 import io.github.aakira.napier.DebugAntilog
@@ -20,6 +21,7 @@ class App: Application() {
             androidContext(this@App)
             modules(
                 viewModelModule,
+                notificationModule,
             )
         }
     }
