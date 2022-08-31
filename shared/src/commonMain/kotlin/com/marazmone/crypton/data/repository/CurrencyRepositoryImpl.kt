@@ -26,6 +26,11 @@ class CurrencyRepositoryImpl(
         return entityToListItemMapper.listAsync(entities)
     }
 
+    override suspend fun getAllFavorite(): List<CurrencyListItem> {
+        val entities = cache.getAllFavorite()
+        return entityToListItemMapper.listAsync(entities)
+    }
+
     override suspend fun getCurrencyById(id: String): CurrencyDetail? =
         cache.getById(id)?.let { entityToDetailMapper.mapAsync(it) }
 

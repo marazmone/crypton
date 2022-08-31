@@ -1,5 +1,6 @@
 package com.marazmone.crypton.di
 
+import com.marazmone.crypton.domain.usecase.currency.CurrencyGetAllFavoriteUseCase
 import com.marazmone.crypton.domain.usecase.currency.CurrencyGetAllUseCase
 import com.marazmone.crypton.domain.usecase.currency.CurrencyGetByIdUseCase
 import com.marazmone.crypton.domain.usecase.currency.CurrencyObserveAllFavoriteUseCase
@@ -16,4 +17,5 @@ val currencyUseCaseModule = module {
     factoryOf(::CurrencySetFavoriteByIdUseCase)
     factoryOf(::CurrencyObserveAllFavoriteUseCase)
     factoryOf(::CurrencyUpdateByIdsUseCase)
+    factoryOf(::CurrencyGetAllFavoriteUseCase)
 }
