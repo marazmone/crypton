@@ -11,6 +11,7 @@ fun initKoin(appDeclaration: KoinAppDeclaration = {}) = startKoin {
         repositoryModule,
         currencyUseCaseModule,
         currencyMapperModule,
+        utilModule,
     )
 }
 
