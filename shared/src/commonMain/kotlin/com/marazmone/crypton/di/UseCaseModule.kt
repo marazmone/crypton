@@ -7,6 +7,8 @@ import com.marazmone.crypton.domain.usecase.currency.CurrencyObserveAllFavoriteU
 import com.marazmone.crypton.domain.usecase.currency.CurrencyObserveAllUseCase
 import com.marazmone.crypton.domain.usecase.currency.CurrencySetFavoriteByIdUseCase
 import com.marazmone.crypton.domain.usecase.currency.CurrencyUpdateByIdsUseCase
+import com.marazmone.crypton.domain.usecase.reminder.DailyReminderStartedGetUseCase
+import com.marazmone.crypton.domain.usecase.reminder.DailyReminderStartedSaveUseCase
 import org.koin.core.module.dsl.factoryOf
 import org.koin.dsl.module
 
@@ -18,4 +20,6 @@ val currencyUseCaseModule = module {
     factoryOf(::CurrencyObserveAllFavoriteUseCase)
     factoryOf(::CurrencyUpdateByIdsUseCase)
     factoryOf(::CurrencyGetAllFavoriteUseCase)
+    factoryOf(::DailyReminderStartedGetUseCase)
+    factoryOf(::DailyReminderStartedSaveUseCase)
 }

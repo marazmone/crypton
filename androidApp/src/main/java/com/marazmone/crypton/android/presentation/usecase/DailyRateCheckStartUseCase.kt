@@ -3,10 +3,10 @@ package com.marazmone.crypton.android.presentation.usecase
 import androidx.work.Constraints
 import androidx.work.NetworkType
 import androidx.work.PeriodicWorkRequestBuilder
-import androidx.work.WorkInfo
 import androidx.work.WorkManager
-import com.marazmone.crypton.android.presentation.util.getWorkInfosByTagSuspended
 import com.marazmone.crypton.android.presentation.worker.ComparisonWorker
+import com.marazmone.crypton.domain.usecase.reminder.DailyReminderStartedGetUseCase
+import com.marazmone.crypton.domain.usecase.reminder.DailyReminderStartedSaveUseCase
 import java.time.LocalDateTime
 import java.time.ZoneOffset
 import java.util.concurrent.TimeUnit
@@ -15,22 +15,23 @@ private const val CHECK_RATE_WORK_TAG = "check_rate_work_tag_new"
 
 class DailyRateCheckStartUseCase(
     private val workManager: WorkManager,
+    private val dailyReminderStartedGetUseCase: DailyReminderStartedGetUseCase,
+    private val dailyReminderStartedSaveUseCase: DailyReminderStartedSaveUseCase,
 ) {
 
-    suspend fun execute() {
-        val works: List<WorkInfo> = workManager.getWorkInfosByTagSuspended(CHECK_RATE_WORK_TAG)
-        if (works.isNotEmpty() && (works[0].state == WorkInfo.State.ENQUEUED || works[0].state == WorkInfo.State.RUNNING)) return
+    fun execute() {
+        if (dailyReminderStartedGetUseCase.execute()) return
         val constraints = Constraints.Builder()
             .setRequiredNetworkType(NetworkType.CONNECTED)
             .build()
         val secondsDelay = getInitialSecondsDelayInterval()
-        val startRateWork = PeriodicWorkRequestBuilder<ComparisonWorker>(24, TimeUnit.HOURS)
+        val startRateWork = PeriodicWorkRequestBuilder<ComparisonWorker>(1, TimeUnit.DAYS)
             .setConstraints(constraints)
-            .setInitialDelay(secondsDelay, TimeUnit.MILLISECONDS)
-            .setInitialDelay(15, TimeUnit.MINUTES)
+            .setInitialDelay(secondsDelay, TimeUnit.SECONDS)
             .addTag(CHECK_RATE_WORK_TAG)
             .build()
         workManager.enqueue(startRateWork)
+        dailyReminderStartedSaveUseCase.execute()
     }
 
     /**
