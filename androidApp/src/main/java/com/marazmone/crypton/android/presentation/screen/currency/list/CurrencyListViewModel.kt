@@ -32,8 +32,8 @@ class CurrencyListViewModel(
 
     private fun observeAllCurrency() {
         viewModelScope.launch {
-            currencyObserveAllUseCase.execute().collect {
-                if (it.isNotEmpty()) sendAction(Action.Success(it))
+            currencyObserveAllUseCase.execute().collect { list ->
+                if (list.isNotEmpty()) sendAction(Action.Success(list))
             }
         }
     }

@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <string name="app_name">CryptoN</string>
     <string name="market_cap">MCap:</string>
     <string name="percent_change_1h">1H</string>
     <string name="percent_change_1d">1D</string>
@@ -22,4 +23,6 @@
     <string name="something_wrong">Something went wrong, please try again later</string>
     <string name="repeat">Repeat</string>
     <string name="favorite_empty_state">You don\'t have any\nfavorite cryptocurrency yet!\nTime to do it!</string>
+    <string name="notification_channel_currency_changes">Currency changes</string>
+    <string name="notification_channel_daily_currency_changes">Daily currency changes</string>
 </resources>

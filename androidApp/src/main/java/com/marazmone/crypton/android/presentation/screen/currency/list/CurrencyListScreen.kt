@@ -27,7 +27,9 @@ fun CurrencyListScreen(
     val state = viewModel.stateLiveData.value
     SwipeRefresh(
         state = rememberSwipeRefreshState(isRefreshing = state.isRefresh),
-        onRefresh = { viewModel.getAllCurrency(true) },
+        onRefresh = {
+            viewModel.getAllCurrency(true)
+        },
     ) {
         Box(
             contentAlignment = Alignment.Center,

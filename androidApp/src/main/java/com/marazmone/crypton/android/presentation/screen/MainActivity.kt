@@ -55,13 +55,17 @@ import com.marazmone.crypton.android.presentation.ui.Colors
 import com.marazmone.crypton.android.presentation.ui.Colors.Main.Background
 import com.marazmone.crypton.android.presentation.ui.NoRippleTheme
 import com.marazmone.crypton.android.presentation.util.PaddingValuesBottom
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
 private const val BOTTOM_BAR_ANIMATION_HEIGHT = 128
 
 class MainActivity : AppCompatActivity() {
 
+    private val viewModel by viewModel<MainViewModel>()
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        viewModel.startDailyRateChecker()
         WindowCompat.setDecorFitsSystemWindows(window, false)
         setContent {
             AppTheme {

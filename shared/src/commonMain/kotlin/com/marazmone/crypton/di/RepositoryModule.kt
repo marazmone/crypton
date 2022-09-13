@@ -12,7 +12,7 @@ import org.koin.core.qualifier.named
 import org.koin.dsl.module
 
 val repositoryModule = module {
-    single<CurrencyRepository> {
+    factory<CurrencyRepository> {
         CurrencyRepositoryImpl(
             remote = get(),
             cache = get(),

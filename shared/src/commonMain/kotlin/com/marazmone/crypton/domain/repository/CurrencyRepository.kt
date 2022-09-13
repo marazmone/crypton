@@ -8,6 +8,8 @@ interface CurrencyRepository {
 
     suspend fun getAll(): List<CurrencyListItem>
 
+    suspend fun getAllFavorite(): List<CurrencyListItem>
+
     suspend fun getCurrencyById(id: String): CurrencyDetail?
 
     suspend fun updateFavorite(id: String, isFavorite: Boolean)
