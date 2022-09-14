@@ -7,9 +7,9 @@ import kotlin.reflect.full.memberProperties
 class StateTimeTravelDebugger(private val viewClassName: String) {
 
     private val stateTimeline = mutableListOf<StateTransition>()
-    private var lastViewAction: BaseAction? = null
+    private var lastViewAction: BaseViewAction? = null
 
-    fun addAction(viewAction: BaseAction) {
+    fun addAction(viewAction: BaseViewAction) {
         lastViewAction = viewAction
     }
 
@@ -89,7 +89,7 @@ class StateTimeTravelDebugger(private val viewClassName: String) {
 
     private data class StateTransition(
         val oldState: BaseViewState,
-        val action: BaseAction,
+        val action: BaseViewAction,
         val newState: BaseViewState
     )
 }

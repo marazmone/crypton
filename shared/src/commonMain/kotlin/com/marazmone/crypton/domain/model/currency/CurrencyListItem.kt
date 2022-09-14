@@ -31,7 +31,7 @@ data class CurrencyListItem(
 
     companion object {
 
-        private fun emptyItem(rank: Int): CurrencyListItem = CurrencyListItem(
+        private fun mockItem(rank: Int): CurrencyListItem = CurrencyListItem(
                 id = Random.nextInt().toString(),
                 name = "Currency name",
                 symbol = "SML",
@@ -43,8 +43,8 @@ data class CurrencyListItem(
                 imageUrl = "",
             )
 
-        fun emptyList(): List<CurrencyListItem> = List(100) {
-            emptyItem(it)
+        fun mockList(): List<CurrencyListItem> = List(100) {
+            mockItem(it)
         }
     }
 }

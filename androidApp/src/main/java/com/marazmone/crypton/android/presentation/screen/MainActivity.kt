@@ -47,9 +47,10 @@ import androidx.navigation.compose.rememberNavController
 import com.marazmone.crypton.android.presentation.navigation.Arguments
 import com.marazmone.crypton.android.presentation.navigation.NavScreen
 import com.marazmone.crypton.android.presentation.navigation.bottom_menu.NavigationItem
-import com.marazmone.crypton.android.presentation.screen.currency.detail.CurrencyDetailScreen
-import com.marazmone.crypton.android.presentation.screen.currency.favorite.CurrencyFavoriteScreen
-import com.marazmone.crypton.android.presentation.screen.currency.list.CurrencyListScreen
+import com.marazmone.crypton.android.presentation.screen.currency.detail.composable.CurrencyDetailDirection
+import com.marazmone.crypton.android.presentation.screen.currency.detail.composable.CurrencyDetailScreen
+import com.marazmone.crypton.android.presentation.screen.currency.favorite.composable.CurrencyFavoriteDirection
+import com.marazmone.crypton.android.presentation.screen.currency.list.composable.CurrencyListDirection
 import com.marazmone.crypton.android.presentation.ui.AppTheme
 import com.marazmone.crypton.android.presentation.ui.Colors
 import com.marazmone.crypton.android.presentation.ui.Colors.Main.Background
@@ -112,11 +113,11 @@ class MainActivity : AppCompatActivity() {
     fun Navigation(navController: NavHostController, needBottom: (Boolean) -> Unit) {
         NavHost(navController = navController, startDestination = NavigationItem.HOME.route) {
             composable(NavigationItem.HOME.route) {
-                CurrencyListScreen(navController)
+                CurrencyListDirection(navController)
                 needBottom.invoke(true)
             }
             composable(NavigationItem.FAVORITE.route) {
-                CurrencyFavoriteScreen(navController)
+                CurrencyFavoriteDirection(navController)
                 needBottom.invoke(true)
             }
             composable(NavScreen.CurrencyDetail.route) { backStackEntry ->
@@ -124,7 +125,7 @@ class MainActivity : AppCompatActivity() {
                 requireNotNull(currencyId) {
                     "currency id parameter wasn't found. Please make sure it's set!"
                 }
-                CurrencyDetailScreen(id = currencyId, navController = navController)
+                CurrencyDetailDirection(id = currencyId, navController = navController)
                 needBottom.invoke(false)
             }
         }
