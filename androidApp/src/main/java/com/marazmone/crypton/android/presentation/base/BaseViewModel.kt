@@ -1,15 +1,27 @@
 package com.marazmone.crypton.android.presentation.base
 
+import androidx.compose.runtime.MutableState
+import androidx.compose.runtime.State
 import androidx.compose.runtime.mutableStateOf
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
 import com.marazmone.crypton.android.BuildConfig
 import kotlin.properties.Delegates
+import kotlinx.coroutines.channels.Channel
+import kotlinx.coroutines.flow.receiveAsFlow
+import kotlinx.coroutines.launch
 
-abstract class BaseViewModel<ViewState : BaseViewState, ViewAction : BaseAction>(initialState: ViewState) :
-    ViewModel() {
+abstract class BaseViewModel<STATE : BaseViewState, ACTION : BaseViewAction, EFFECT : BaseViewEffect> : ViewModel() {
 
-    var stateLiveData = mutableStateOf(initialState)
-        private set
+    abstract fun setInitialState(): STATE
+
+    private val initialState: STATE by lazy { setInitialState() }
+
+    private val _state: MutableState<STATE> = mutableStateOf(initialState)
+    val state: State<STATE> = _state
+
+    private val _effects = Channel<EFFECT>()
+    val effects = _effects.receiveAsFlow()
 
     private var stateTimeTravelDebugger: StateTimeTravelDebugger? = null
 
@@ -19,10 +31,8 @@ abstract class BaseViewModel<ViewState : BaseViewState, ViewAction : BaseAction>
         }
     }
 
-    // Delegate will handle state event deduplication
-    // (multiple states of the same type holding the same data will not be dispatched multiple times to LiveData stream)
-    protected var state by Delegates.observable(initialState) { _, old, new ->
-        stateLiveData.value = new
+    protected var currentState by Delegates.observable(initialState) { _, old, new ->
+        _state.value = new
 
         if (new != old) {
             stateTimeTravelDebugger?.apply {
@@ -32,10 +42,22 @@ abstract class BaseViewModel<ViewState : BaseViewState, ViewAction : BaseAction>
         }
     }
 
-    fun sendAction(viewAction: ViewAction) {
-        stateTimeTravelDebugger?.addAction(viewAction)
-        state = onReduceState(viewAction)
+    protected fun sendEffect(builder: () -> EFFECT) {
+        val effectValue = builder()
+        viewModelScope.launch { _effects.send(effectValue) }
     }
 
-    protected abstract fun onReduceState(viewAction: ViewAction): ViewState
+    protected fun sendAction(builder: () -> ACTION) {
+        val actionValue = builder()
+        stateTimeTravelDebugger?.addAction(actionValue)
+        currentState = onReduceState(actionValue)
+    }
+
+    protected abstract fun onReduceState(action: ACTION): STATE
 }
+
+interface BaseViewState
+
+interface BaseViewAction
+
+interface BaseViewEffect

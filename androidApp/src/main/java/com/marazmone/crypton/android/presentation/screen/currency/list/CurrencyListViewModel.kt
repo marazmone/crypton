@@ -1,10 +1,14 @@
 package com.marazmone.crypton.android.presentation.screen.currency.list
 
 import androidx.lifecycle.viewModelScope
-import com.marazmone.crypton.android.presentation.base.BaseAction
 import com.marazmone.crypton.android.presentation.base.BaseViewModel
-import com.marazmone.crypton.android.presentation.base.BaseViewState
-import com.marazmone.crypton.domain.model.currency.CurrencyListItem
+import com.marazmone.crypton.android.presentation.screen.currency.list.CurrencyListContract.Action
+import com.marazmone.crypton.android.presentation.screen.currency.list.CurrencyListContract.Action.Error
+import com.marazmone.crypton.android.presentation.screen.currency.list.CurrencyListContract.Action.Loading
+import com.marazmone.crypton.android.presentation.screen.currency.list.CurrencyListContract.Action.Refresh
+import com.marazmone.crypton.android.presentation.screen.currency.list.CurrencyListContract.Action.Success
+import com.marazmone.crypton.android.presentation.screen.currency.list.CurrencyListContract.Effect
+import com.marazmone.crypton.android.presentation.screen.currency.list.CurrencyListContract.State
 import com.marazmone.crypton.domain.usecase.currency.CurrencyGetAllUseCase
 import com.marazmone.crypton.domain.usecase.currency.CurrencyObserveAllUseCase
 import kotlinx.coroutines.launch
@@ -12,20 +16,24 @@ import kotlinx.coroutines.launch
 class CurrencyListViewModel(
     private val currencyGetAllUseCase: CurrencyGetAllUseCase,
     private val currencyObserveAllUseCase: CurrencyObserveAllUseCase,
-) : BaseViewModel<CurrencyListViewModel.ViewState, CurrencyListViewModel.Action>(ViewState()) {
+) : BaseViewModel<State, Action, Effect>() {
 
     init {
         getAllCurrency()
         observeAllCurrency()
     }
 
+    override fun setInitialState(): State = State()
+
     fun getAllCurrency(withRefresh: Boolean = false) {
         viewModelScope.launch {
-            if (withRefresh) sendAction(Action.Refresh) else sendAction(Action.Loading)
+            sendAction {
+                if (withRefresh) Refresh else Loading
+            }
             runCatching {
                 currencyGetAllUseCase.execute()
             }.onFailure {
-                sendAction(Action.Error(it.message.orEmpty()))
+                sendAction { Error(it.message.orEmpty()) }
             }
         }
     }
@@ -33,45 +41,26 @@ class CurrencyListViewModel(
     private fun observeAllCurrency() {
         viewModelScope.launch {
             currencyObserveAllUseCase.execute().collect { list ->
-                if (list.isNotEmpty()) sendAction(Action.Success(list))
+                if (list.isNotEmpty()) sendAction { Success(list) }
             }
         }
     }
 
-    override fun onReduceState(viewAction: Action): ViewState = when (viewAction) {
-        is Action.Success -> state.copy(
+    override fun onReduceState(action: Action): State = when (action) {
+        is Success -> currentState.copy(
             isRefresh = false,
             isLoading = false,
             isError = false,
-            list = viewAction.list,
+            list = action.list,
         )
-        is Action.Error -> state.copy(
+        is Error -> currentState.copy(
             isRefresh = false,
             isLoading = false,
             isError = true,
-            errorText = viewAction.message,
+            errorText = action.message,
             list = emptyList(),
         )
-        is Action.Loading -> state.copy(isLoading = true)
-        is Action.Refresh -> state.copy(isRefresh = true)
-    }
-
-    data class ViewState(
-        val isRefresh: Boolean = false,
-        val isLoading: Boolean = false,
-        val isError: Boolean = false,
-        val errorText: String = "",
-        val list: List<CurrencyListItem> = listOf()
-    ) : BaseViewState
-
-    sealed interface Action : BaseAction {
-
-        class Success(val list: List<CurrencyListItem>) : Action
-
-        class Error(val message: String) : Action
-
-        object Refresh : Action
-
-        object Loading : Action
+        is Loading -> currentState.copy(isLoading = true)
+        is Refresh -> currentState.copy(isRefresh = true)
     }
 }

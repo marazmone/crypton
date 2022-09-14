@@ -1,10 +1,13 @@
 package com.marazmone.crypton.android.presentation.screen.currency.detail
 
 import androidx.lifecycle.viewModelScope
-import com.marazmone.crypton.android.presentation.base.BaseAction
 import com.marazmone.crypton.android.presentation.base.BaseViewModel
-import com.marazmone.crypton.android.presentation.base.BaseViewState
-import com.marazmone.crypton.domain.model.currency.CurrencyDetail
+import com.marazmone.crypton.android.presentation.screen.currency.detail.CurrencyDetailContract.Action
+import com.marazmone.crypton.android.presentation.screen.currency.detail.CurrencyDetailContract.Action.Error
+import com.marazmone.crypton.android.presentation.screen.currency.detail.CurrencyDetailContract.Action.Favorite
+import com.marazmone.crypton.android.presentation.screen.currency.detail.CurrencyDetailContract.Action.Success
+import com.marazmone.crypton.android.presentation.screen.currency.detail.CurrencyDetailContract.Effect
+import com.marazmone.crypton.android.presentation.screen.currency.detail.CurrencyDetailContract.State
 import com.marazmone.crypton.domain.usecase.currency.CurrencyGetByIdUseCase
 import com.marazmone.crypton.domain.usecase.currency.CurrencySetFavoriteByIdUseCase
 import kotlinx.coroutines.launch
@@ -12,15 +15,19 @@ import kotlinx.coroutines.launch
 class CurrencyDetailViewModel(
     private val currencyGetByIdUseCase: CurrencyGetByIdUseCase,
     private val currencyUpdateFavoriteByIdUseCase: CurrencySetFavoriteByIdUseCase,
-) : BaseViewModel<CurrencyDetailViewModel.ViewState, CurrencyDetailViewModel.Action>(ViewState()) {
+) : BaseViewModel<State, Action, Effect>() {
+
+    override fun setInitialState(): State = State()
 
     fun getCurrencyById(id: String) {
         viewModelScope.launch {
             val result = currencyGetByIdUseCase.execute(id)
-            if (result != null) {
-                sendAction(Action.Success(result))
-            } else {
-                sendAction(Action.Error)
+            sendAction {
+                if (result != null) {
+                    Success(result)
+                } else {
+                    Error
+                }
             }
         }
     }
@@ -28,35 +35,21 @@ class CurrencyDetailViewModel(
     fun setFavorite(id: String, isFavorite: Boolean) {
         viewModelScope.launch {
             currencyUpdateFavoriteByIdUseCase.execute(id, isFavorite)
-            sendAction(Action.Favorite(isFavorite))
+            sendAction { Favorite(isFavorite) }
         }
     }
 
-    override fun onReduceState(viewAction: Action): ViewState = when (viewAction) {
-        is Action.Error -> state.copy(
+    override fun onReduceState(action: Action): State = when (action) {
+        is Error -> currentState.copy(
             isError = true,
             data = null,
         )
-        is Action.Success -> state.copy(
+        is Success -> currentState.copy(
             isError = false,
-            data = viewAction.data
+            data = action.data
         )
-        is Action.Favorite -> state.copy(
-            data = state.data?.copy(isFavorite = viewAction.enable)
+        is Favorite -> currentState.copy(
+            data = currentState.data?.copy(isFavorite = action.enable)
         )
-    }
-
-    data class ViewState(
-        val isError: Boolean = false,
-        val data: CurrencyDetail? = null
-    ) : BaseViewState
-
-    sealed interface Action : BaseAction {
-
-        class Success(val data: CurrencyDetail) : Action
-
-        class Favorite(val enable: Boolean) : Action
-
-        object Error : Action
     }
 }
