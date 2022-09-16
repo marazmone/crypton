@@ -26,13 +26,13 @@ kotlin {
         }
     }
 
-    val coroutinesVersion = "1.6.2"
-    val serializationVersion = "1.3.3"
-    val ktorVersion = "2.0.2"
+    val coroutinesVersion = "1.6.4"
+    val serializationVersion = "1.4.0"
+    val ktorVersion = "2.1.1"
     val koinVersion = "3.2.0"
     val napierVersion = "2.6.1"
-    val realVersion = "1.0.0"
-    val dateTimeVersion = "0.3.2"
+    val realVersion = "1.0.2"
+    val dateTimeVersion = "0.4.0"
 
     sourceSets {
         val commonMain by getting {
@@ -87,10 +87,11 @@ kotlin {
 }
 
 android {
-    compileSdk = 32
+    compileSdk = 33
     sourceSets["main"].manifest.srcFile("src/androidMain/AndroidManifest.xml")
     defaultConfig {
         minSdk = 28
-        targetSdk = 32
+        targetSdk = 33
     }
+    namespace = "com.marazmone.crypton"
 }

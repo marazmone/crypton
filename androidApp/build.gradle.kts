@@ -5,11 +5,11 @@ plugins {
 }
 
 android {
-    compileSdk = 32
+    compileSdk = 33
     defaultConfig {
         applicationId = "com.marazmone.crypton.android"
         minSdk = 28
-        targetSdk = 32
+        targetSdk = 33
         versionCode = 1
         versionName = "1.0"
     }
@@ -27,18 +27,19 @@ android {
         compose = true
     }
     composeOptions {
-        kotlinCompilerExtensionVersion = "1.2.0"
+        kotlinCompilerExtensionVersion = "1.3.1"
     }
+    namespace = "com.marazmone.crypton.android"
 }
 
 dependencies {
     implementation(project(":shared"))
-    implementation("androidx.appcompat:appcompat:1.4.2")
-    implementation("androidx.activity:activity-compose:1.5.0")
+    implementation("androidx.appcompat:appcompat:1.5.1")
+    implementation("androidx.activity:activity-compose:1.5.1")
     implementation("io.coil-kt:coil-compose:2.1.0")
-    implementation("androidx.compose.material3:material3:1.0.0-alpha14")
-    implementation("com.google.accompanist:accompanist-swiperefresh:0.24.10-beta")
-    val lifecycleVersion = "2.5.0-rc01"
+    implementation("androidx.compose.material3:material3:1.0.0-beta02")
+    implementation("com.google.accompanist:accompanist-swiperefresh:0.26.3-beta")
+    val lifecycleVersion = "2.5.1"
     implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:$lifecycleVersion")
     implementation("androidx.lifecycle:lifecycle-viewmodel-compose:$lifecycleVersion")
     implementation("androidx.lifecycle:lifecycle-livedata-ktx:$lifecycleVersion")
@@ -46,7 +47,7 @@ dependencies {
     implementation("androidx.lifecycle:lifecycle-viewmodel-savedstate:$lifecycleVersion")
     implementation("androidx.lifecycle:lifecycle-common-java8:$lifecycleVersion")
     implementation(kotlin("reflect"))
-    val composeVersion = "1.2.0-beta03"
+    val composeVersion = "1.2.1"
     implementation("androidx.compose.ui:ui:$composeVersion")
     implementation("androidx.compose.ui:ui-tooling:$composeVersion")
     implementation("androidx.compose.foundation:foundation:$composeVersion")
@@ -57,7 +58,7 @@ dependencies {
     implementation("io.insert-koin:koin-androidx-compose:$koinVersion")
     implementation("io.insert-koin:koin-androidx-workmanager:$koinVersion")
 
-    val navVersion = "2.4.2"
+    val navVersion = "2.5.2"
     implementation("androidx.navigation:navigation-compose:$navVersion")
 
     val work_version = "2.7.1"
