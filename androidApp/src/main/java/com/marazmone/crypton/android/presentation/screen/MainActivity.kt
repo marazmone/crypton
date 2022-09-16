@@ -14,6 +14,7 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.navigationBarsPadding
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.RoundedCornerShape
@@ -95,15 +96,15 @@ class MainActivity : AppCompatActivity() {
                     BottomNavigationView(navController)
                 }
             }
-        ) { innerPadding ->
+        ) { paddingValues ->
             Surface(
-                modifier = Modifier.fillMaxSize(),
                 color = MaterialTheme.colorScheme.background,
+                modifier = Modifier
+                    .fillMaxSize()
+                    .padding(bottom = paddingValues.calculateBottomPadding()),
             ) {
-                Box(modifier = Modifier.padding(innerPadding)) {
-                    Navigation(navController = navController) {
-                        needBottom.value = it
-                    }
+                Navigation(navController = navController) {
+                    needBottom.value = it
                 }
             }
         }
