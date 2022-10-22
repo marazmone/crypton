@@ -27,11 +27,11 @@ kotlin {
     }
 
     val coroutinesVersion = "1.6.4"
-    val serializationVersion = "1.4.0"
-    val ktorVersion = "2.1.1"
-    val koinVersion = "3.2.0"
+    val serializationVersion = "1.4.1"
+    val ktorVersion = "2.1.2"
+    val koinVersion = "3.2.2"
     val napierVersion = "2.6.1"
-    val realVersion = "1.0.2"
+    val realVersion = "1.4.0"
     val dateTimeVersion = "0.4.0"
 
     sourceSets {
