@@ -58,7 +58,7 @@ dependencies {
     implementation("io.insert-koin:koin-androidx-compose:3.2.2")
     implementation("io.insert-koin:koin-androidx-workmanager:$koinVersion")
 
-    val navVersion = "2.5.2"
+    val navVersion = "2.5.3"
     implementation("androidx.navigation:navigation-compose:$navVersion")
 
     val work_version = "2.7.1"
