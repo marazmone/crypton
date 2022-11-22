@@ -1,6 +1,9 @@
 package com.marazmone.crypton.data.datasource
 
 import com.marazmone.crypton.data.remote.RemoteConst.QueryParams.IDS
+import com.marazmone.crypton.data.remote.RemoteConst.QueryParams.ORDER
+import com.marazmone.crypton.data.remote.RemoteConst.QueryParams.PAGE
+import com.marazmone.crypton.data.remote.RemoteConst.QueryParams.PER_PAGE
 import com.marazmone.crypton.data.remote.RemoteConst.QueryParams.PRICE_CHANGE_PERCENTAGE
 import com.marazmone.crypton.data.remote.RemoteConst.QueryParams.VS_CURRENCY
 import com.marazmone.crypton.data.remote.RemoteConst.Url.BASE
@@ -22,6 +25,9 @@ class CurrencyRemoteDataSourceImpl(
         val request = api.get(GET_ALL) {
             url {
                 parameters.append(VS_CURRENCY, vsCurrency)
+                parameters.append(PAGE, "1")
+                parameters.append(PER_PAGE, "100")
+                parameters.append(ORDER, "market_cap_desc")
                 parameters.append(PRICE_CHANGE_PERCENTAGE, priceChangePercentage)
                 ids?.also { parameters.append(IDS, it) }
             }

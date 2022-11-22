@@ -63,4 +63,5 @@ dependencies {
 
     val work_version = "2.7.1"
     implementation("androidx.work:work-runtime-ktx:$work_version")
+    testImplementation("junit:junit:4.13.2")
 }
