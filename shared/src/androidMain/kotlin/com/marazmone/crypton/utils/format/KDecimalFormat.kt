@@ -27,10 +27,14 @@ actual object KDecimalFormat {
         val formatter = DecimalFormat("###,###.######")
         val stringBuilder = StringBuilder()
         number.toBigDecimal().toString().forEach { char ->
-            val charsAfterDot =
-                stringBuilder.toString().substringAfter(".", missingDelimiterValue = "")
-            if (charsAfterDot.count() >= 2 && charsAfterDot.last() != '0') {
-                return@forEach
+            val charsAfterDot = stringBuilder.toString()
+                .substringAfter(".", missingDelimiterValue = "")
+            val maxSizeLimited = charsAfterDot.count() == 2
+            if (maxSizeLimited) {
+                val sumAfterDotNotZero = charsAfterDot
+                    .map { it.digitToInt() }
+                    .reduce { acc, item -> acc + item } != 0
+                if (sumAfterDotNotZero) return@forEach
             }
             stringBuilder.append(char)
         }

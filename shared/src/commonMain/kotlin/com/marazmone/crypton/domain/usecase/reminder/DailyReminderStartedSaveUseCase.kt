@@ -8,6 +8,6 @@ class DailyReminderStartedSaveUseCase(
 ) {
 
     fun execute() {
-        localCacheManager.dailyReminderStarted = true
+        localCacheManager.saveDailyReminderStarted(true)
     }
 }

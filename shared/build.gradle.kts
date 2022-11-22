@@ -33,6 +33,7 @@ kotlin {
     val napierVersion = "2.6.1"
     val realVersion = "1.5.0"
     val dateTimeVersion = "0.4.0"
+    val dataStoreVersion = "1.1.0-dev01"
 
     sourceSets {
         val commonMain by getting {
@@ -48,6 +49,8 @@ kotlin {
                 implementation("io.realm.kotlin:library-base:$realVersion")
                 implementation("org.jetbrains.kotlinx:kotlinx-datetime:$dateTimeVersion")
                 api("io.github.aakira:napier:$napierVersion")
+                api("androidx.datastore:datastore-preferences-core:$dataStoreVersion")
+                api("androidx.datastore:datastore-core-okio:$dataStoreVersion")
             }
         }
         val commonTest by getting {

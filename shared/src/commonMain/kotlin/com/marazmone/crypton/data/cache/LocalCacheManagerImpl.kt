@@ -1,14 +1,33 @@
 package com.marazmone.crypton.data.cache
 
-import com.marazmone.crypton.utils.prefs.KMMPreference
-
-private const val DAILY_REMINDER_STARTED = "daily_reminder_started"
+import androidx.datastore.core.DataStore
+import androidx.datastore.preferences.core.Preferences
+import androidx.datastore.preferences.core.booleanPreferencesKey
+import androidx.datastore.preferences.core.edit
+import com.marazmone.crypton.utils.orFalse
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.map
+import kotlinx.coroutines.launch
 
 class LocalCacheManagerImpl(
-    private val prefs: KMMPreference,
+    private val dataStore: DataStore<Preferences>,
 ) : LocalCacheManager {
 
-    override var dailyReminderStarted: Boolean
-        get() = prefs.getBool(DAILY_REMINDER_STARTED)
-        set(value) = prefs.put(DAILY_REMINDER_STARTED, value)
+    private val scope = CoroutineScope(Dispatchers.Default)
+
+    private val dailyReminderStarted = booleanPreferencesKey("daily_reminder_started")
+
+    override fun getDailyReminderStarted(): Flow<Boolean> = dataStore.data.map {
+        it[dailyReminderStarted].orFalse
+    }
+
+    override fun saveDailyReminderStarted(value: Boolean) {
+        scope.launch {
+            dataStore.edit {
+                it[dailyReminderStarted] = value
+            }
+        }
+    }
 }

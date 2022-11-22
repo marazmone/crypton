@@ -20,10 +20,14 @@ class CurrencyCacheDataSourceImpl(
     override suspend fun save(entities: List<CurrencyEntity>) {
         realm.write {
             entities.forEach { newEntity ->
-                val currentEntity = query<CurrencyEntity>("id == $0", newEntity.id).find().firstOrNull()
-                if (currentEntity != null) {
-                    newEntity.isFavorite = currentEntity.isFavorite
-                }
+                val currentEntityById = query<CurrencyEntity>("id == $0", newEntity.id)
+                    .find()
+                    .firstOrNull()
+                val currentEntityByRank = query<CurrencyEntity>("cmcRank == $0", newEntity.cmcRank)
+                    .find()
+                    .firstOrNull()
+                if (currentEntityById != null) newEntity.isFavorite = currentEntityById.isFavorite
+                if (currentEntityByRank != null) delete(currentEntityByRank)
                 insertOrUpdate(newEntity)
             }
         }
