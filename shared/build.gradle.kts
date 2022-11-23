@@ -48,9 +48,9 @@ kotlin {
                 implementation("io.insert-koin:koin-core:$koinVersion")
                 implementation("io.realm.kotlin:library-base:$realVersion")
                 implementation("org.jetbrains.kotlinx:kotlinx-datetime:$dateTimeVersion")
+                implementation("androidx.datastore:datastore-preferences-core:$dataStoreVersion")
+                implementation("androidx.datastore:datastore-core-okio:$dataStoreVersion")
                 api("io.github.aakira:napier:$napierVersion")
-                api("androidx.datastore:datastore-preferences-core:$dataStoreVersion")
-                api("androidx.datastore:datastore-core-okio:$dataStoreVersion")
             }
         }
         val commonTest by getting {
