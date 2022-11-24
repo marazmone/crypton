@@ -17,7 +17,7 @@ private fun SuccessStatePreview() {
                 list = CurrencyListItem.mockList().sortedBy { it.rank }
             ),
             onRefresh = {},
-            onOpenDetailScreenAction = {}
+            onOpenDetailScreenAction = {},
         )
     }
 }
@@ -34,7 +34,7 @@ private fun LoadingStatePreview() {
                 isLoading = true,
             ),
             onRefresh = {},
-            onOpenDetailScreenAction = {}
+            onOpenDetailScreenAction = {},
         )
     }
 }
@@ -52,7 +52,7 @@ private fun ErrorStatePreview() {
                 errorText = stringResource(id = string.something_wrong)
             ),
             onRefresh = {},
-            onOpenDetailScreenAction = {}
+            onOpenDetailScreenAction = {},
         )
     }
 }

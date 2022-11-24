@@ -19,6 +19,6 @@ fun CurrencyListDirection(
         onOpenDetailScreenAction = { id ->
             val route = CurrencyDetail.createRoute(id)
             navController.navigate(route)
-        }
+        },
     )
 }
