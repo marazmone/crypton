@@ -9,12 +9,10 @@ import androidx.compose.animation.fadeOut
 import androidx.compose.animation.slideInVertically
 import androidx.compose.animation.slideOutVertically
 import androidx.compose.foundation.background
-import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.navigationBarsPadding
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.RoundedCornerShape
@@ -49,7 +47,6 @@ import com.marazmone.crypton.android.presentation.navigation.Arguments
 import com.marazmone.crypton.android.presentation.navigation.NavScreen
 import com.marazmone.crypton.android.presentation.navigation.bottom_menu.NavigationItem
 import com.marazmone.crypton.android.presentation.screen.currency.detail.composable.CurrencyDetailDirection
-import com.marazmone.crypton.android.presentation.screen.currency.detail.composable.CurrencyDetailScreen
 import com.marazmone.crypton.android.presentation.screen.currency.favorite.composable.CurrencyFavoriteDirection
 import com.marazmone.crypton.android.presentation.screen.currency.list.composable.CurrencyListDirection
 import com.marazmone.crypton.android.presentation.ui.AppTheme
@@ -83,7 +80,7 @@ class MainActivity : AppCompatActivity() {
 
     @OptIn(ExperimentalMaterial3Api::class)
     @Composable
-    fun MainScreen() {
+    private fun MainScreen() {
         val navController = rememberNavController()
         val needBottom = remember { mutableStateOf(true) }
         Scaffold(
@@ -95,7 +92,7 @@ class MainActivity : AppCompatActivity() {
                 ) {
                     BottomNavigationView(navController)
                 }
-            }
+            },
         ) { paddingValues ->
             Surface(
                 color = MaterialTheme.colorScheme.background,
@@ -111,7 +108,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     @Composable
-    fun Navigation(navController: NavHostController, needBottom: (Boolean) -> Unit) {
+    private fun Navigation(navController: NavHostController, needBottom: (Boolean) -> Unit) {
         NavHost(navController = navController, startDestination = NavigationItem.HOME.route) {
             composable(NavigationItem.HOME.route) {
                 CurrencyListDirection(navController)
@@ -133,7 +130,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     @Composable
-    fun BottomNavigationView(navController: NavHostController) {
+    private fun BottomNavigationView(navController: NavHostController) {
         val items = listOf(
             NavigationItem.HOME,
             NavigationItem.FAVORITE
@@ -196,7 +193,7 @@ class MainActivity : AppCompatActivity() {
 
     @Preview(showBackground = true)
     @Composable
-    fun BottomNavigationBarPreview() {
+    private fun BottomNavigationBarPreview() {
         val navController = rememberNavController()
         MaterialTheme {
             BottomNavigationView(navController)
