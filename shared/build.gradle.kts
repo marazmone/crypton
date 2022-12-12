@@ -31,7 +31,7 @@ kotlin {
     val ktorVersion = "2.1.3"
     val koinVersion = "3.2.2"
     val napierVersion = "2.6.1"
-    val realVersion = "1.5.0"
+    val realVersion = "1.5.1"
     val dateTimeVersion = "0.4.0"
     val dataStoreVersion = "1.1.0-alpha01"
 
