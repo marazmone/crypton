@@ -33,7 +33,7 @@ android {
 }
 
 dependencies {
-    val composeBom = platform("androidx.compose:compose-bom:2022.10.00")
+    val composeBom = platform("androidx.compose:compose-bom:2022.12.00")
     implementation(composeBom)
     androidTestImplementation(composeBom)
     implementation(project(":shared"))
