@@ -7,7 +7,7 @@ class DailyReminderStartedSaveUseCase(
     private val localCacheManager: LocalCacheManager,
 ) {
 
-    fun execute() {
-        localCacheManager.saveDailyReminderStarted(true)
+    fun execute(enable: Boolean) {
+        localCacheManager.saveDailyReminderStarted(enable)
     }
 }

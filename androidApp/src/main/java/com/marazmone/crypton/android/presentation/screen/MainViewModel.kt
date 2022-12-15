@@ -2,18 +2,16 @@ package com.marazmone.crypton.android.presentation.screen
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.marazmone.crypton.android.presentation.usecase.DailyRateCheckStartUseCase
-import io.github.aakira.napier.Napier
+import com.marazmone.crypton.android.presentation.usecase.DailyRateCheckAlarmStartUseCase
 import kotlinx.coroutines.launch
 
 class MainViewModel(
-    private val dailyRateCheckStartUseCase: DailyRateCheckStartUseCase,
+    private val dailyRateCheckAlarmStartUseCase: DailyRateCheckAlarmStartUseCase,
 ) : ViewModel() {
 
     fun startDailyRateChecker() {
         viewModelScope.launch {
-            Napier.d("startDailyRateChecker")
-            dailyRateCheckStartUseCase.execute()
+            dailyRateCheckAlarmStartUseCase.execute()
         }
     }
 }

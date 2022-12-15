@@ -1,7 +1,14 @@
 package com.marazmone.crypton.android.presentation.screen
 
+import android.Manifest
+import android.app.AlarmManager
+import android.app.PendingIntent
+import android.content.Context
+import android.content.Intent
 import android.os.Bundle
 import androidx.activity.compose.setContent
+import androidx.activity.result.ActivityResultLauncher
+import androidx.activity.result.contract.ActivityResultContracts.RequestPermission
 import androidx.appcompat.app.AppCompatActivity
 import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.animation.fadeIn
@@ -39,10 +46,12 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.core.view.WindowCompat
 import androidx.navigation.NavHostController
+import androidx.navigation.Navigation
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
+import com.marazmone.crypton.android.presentation.broadcast.AlarmReceiver
 import com.marazmone.crypton.android.presentation.navigation.Arguments
 import com.marazmone.crypton.android.presentation.navigation.NavScreen
 import com.marazmone.crypton.android.presentation.navigation.bottom_menu.NavigationItem
@@ -62,9 +71,15 @@ class MainActivity : AppCompatActivity() {
 
     private val viewModel by viewModel<MainViewModel>()
 
+    private lateinit var requestPermissionLauncher: ActivityResultLauncher<String>
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         viewModel.startDailyRateChecker()
+        requestPermissionLauncher = registerForActivityResult(RequestPermission()) {
+
+        }
+        requestPermissionLauncher.launch(Manifest.permission.POST_NOTIFICATIONS)
         WindowCompat.setDecorFitsSystemWindows(window, false)
         setContent {
             AppTheme {
