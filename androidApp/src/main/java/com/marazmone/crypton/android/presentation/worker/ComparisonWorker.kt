@@ -32,7 +32,7 @@ class ComparisonWorker(
         val list = result.getOrDefault(emptyList())
 
         val onlyFavoriteCurrencies = list.filter { it.isFavorite }
-            .filter { it.percentChange24H.absoluteValue >= 5.0 }
+            .filter { it.percentChange24H.absoluteValue >= 1.0 }
             .map {
                 CurrencyChange(
                     symbol = it.symbol,
