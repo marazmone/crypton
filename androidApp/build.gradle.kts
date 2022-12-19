@@ -55,7 +55,7 @@ dependencies {
     implementation("androidx.compose.foundation:foundation")
     implementation("androidx.compose.runtime:runtime-livedata")
 
-    val koinVersion = "3.3.0"
+    val koinVersion = "3.3.1"
     implementation("io.insert-koin:koin-android:$koinVersion")
     implementation("io.insert-koin:koin-androidx-compose:3.4.0")
     implementation("io.insert-koin:koin-androidx-workmanager:$koinVersion")
