@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">CryptoN</string>
+    <string name="market_cap">Bcap:</string>
+    <string name="percent_change_1h">1H</string>
+    <string name="percent_change_1d">1J</string>
+    <string name="percent_change_1w">1S</string>
+    <string name="key_figures">Chiffres clés</string>
+    <string name="market_cap_full">Capitalisation boursière</string>
+    <string name="symbol">Symbole</string>
+    <string name="rank">Notation</string>
+    <string name="supply">Fournir:</string>
+    <string name="supply_circulating">Circulé</string>
+    <string name="supply_max">Max</string>
+    <string name="supply_total">Total</string>
+    <string name="detail_other_info_24h_high">24h MAX</string>
+    <string name="detail_other_info_24h_low">24h MIN</string>
+    <string name="detail_other_info_ath">Maximum absolu</string>
+    <string name="detail_other_info_atl">Minimum absolu</string>
+    <string name="detail_other_info_trading_volume">Volume négocié</string>
+    <string name="menu_home">Tableau de bord</string>
+    <string name="menu_favorite">Préféré</string>
+    <string name="something_wrong">Quelque chose c\'est mal passé. Merci d\'essayer plus tard</string>
+    <string name="repeat">Répéter</string>
+    <string name="favorite_empty_state">Vous n\'avez pas encore de\ncrypto-monnaie préférée!\nIl est temps de le faire !</string>
+    <string name="notification_channel_currency_changes">Changements de devise</string>
+    <string name="notification_channel_daily_currency_changes">Changements de devise quotidiens</string>
+</resources>

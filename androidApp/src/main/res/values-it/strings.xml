@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">CryptoN</string>
+    <string name="market_cap">MCap:</string>
+    <string name="percent_change_1h">1O</string>
+    <string name="percent_change_1d">1G</string>
+    <string name="percent_change_1w">1S</string>
+    <string name="key_figures">Numeri chiave</string>
+    <string name="market_cap_full">Cap. di mercato</string>
+    <string name="symbol">Simbolo</string>
+    <string name="rank">Valutazione</string>
+    <string name="supply">Fornitura:</string>
+    <string name="supply_circulating">Circolante</string>
+    <string name="supply_max">Massimo</string>
+    <string name="supply_total">Totale</string>
+    <string name="detail_other_info_24h_high">24 ore MASSIMO</string>
+    <string name="detail_other_info_24h_low">24 ore MIN</string>
+    <string name="detail_other_info_ath">Massimo assoluto</string>
+    <string name="detail_other_info_atl">Minimo assoluto</string>
+    <string name="detail_other_info_trading_volume">Volume scambiato</string>
+    <string name="menu_home">Pannello</string>
+    <string name="menu_favorite">Preferito</string>
+    <string name="something_wrong">Qualcosa è andato storto, riprova più tardi</string>
+    <string name="repeat">Ripetere</string>
+    <string name="favorite_empty_state">Non hai ancora nessuna\ncriptovaluta preferita!\nÈ ora di farlo!</string>
+    <string name="notification_channel_currency_changes">Cambiamenti di valuta</string>
+    <string name="notification_channel_daily_currency_changes">Cambio di valuta giornaliero</string>
+</resources>
