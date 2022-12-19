@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">CryptoN</string>
+    <string name="market_cap">MKap:</string>
+    <string name="percent_change_1h">1U</string>
+    <string name="percent_change_1d">1D</string>
+    <string name="percent_change_1w">1W</string>
+    <string name="key_figures">Sleutel nummers</string>
+    <string name="market_cap_full">Marktkapitalisatie</string>
+    <string name="symbol">Symbool</string>
+    <string name="rank">Beoordeling</string>
+    <string name="supply">Levering:</string>
+    <string name="supply_circulating">Circuleert</string>
+    <string name="supply_max">Max</string>
+    <string name="supply_total">Totaal</string>
+    <string name="detail_other_info_24h_high">24 uur MAX</string>
+    <string name="detail_other_info_24h_low">24 uur MIN</string>
+    <string name="detail_other_info_ath">Absoluut maximaal</string>
+    <string name="detail_other_info_atl">Absoluut minimum</string>
+    <string name="detail_other_info_trading_volume">Verhandeld volume</string>
+    <string name="menu_home">Dashboard</string>
+    <string name="menu_favorite">Favoriet</string>
+    <string name="something_wrong">Er is iets misgegaan, probeer het later nog eens</string>
+    <string name="repeat">Herhalen</string>
+    <string name="favorite_empty_state">Je hebt nog geen\nfavoriete cryptocurrency!\nTijd om het te doen!</string>
+    <string name="notification_channel_currency_changes">Valuta verandert</string>
+    <string name="notification_channel_daily_currency_changes">Dagelijkse valutaveranderingen</string>
+</resources>

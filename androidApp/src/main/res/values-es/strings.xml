@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">CryptoN</string>
+    <string name="market_cap">MCap:</string>
+    <string name="percent_change_1h">1H</string>
+    <string name="percent_change_1d">1D</string>
+    <string name="percent_change_1w">1B</string>
+    <string name="key_figures">Números-chave</string>
+    <string name="market_cap_full">Capitalização de mercado</string>
+    <string name="symbol">Símbolo</string>
+    <string name="rank">Avaliação</string>
+    <string name="supply">Fornecer:</string>
+    <string name="supply_circulating">Circulando</string>
+    <string name="supply_max">Máx</string>
+    <string name="supply_total">Total</string>
+    <string name="detail_other_info_24h_high">24h MÁX</string>
+    <string name="detail_other_info_24h_low">24h MIN</string>
+    <string name="detail_other_info_ath">Máximo absoluto</string>
+    <string name="detail_other_info_atl">Mínimo absoluto</string>
+    <string name="detail_other_info_trading_volume">Volume negociado</string>
+    <string name="menu_home">Painel</string>
+    <string name="menu_favorite">Favorito</string>
+    <string name="something_wrong">Algo deu errado, tente novamente mais tarde</string>
+    <string name="repeat">Repetir</string>
+    <string name="favorite_empty_state">Você ainda não tem\nnenhuma criptomoeda favorita!\nHora de fazer isso!</string>
+    <string name="notification_channel_currency_changes">Mudanças de moeda</string>
+    <string name="notification_channel_daily_currency_changes">Mudanças diárias de moeda</string>
+</resources>
