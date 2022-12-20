@@ -29,12 +29,18 @@ data class CurrencyDetail(
     val atlPercentChange: Float,
 ) {
 
-    val price: String get() = _price.amountWithCurrency()
-    val marketCap: String get() = _marketCap.amountWithCurrency()
-    val supplyCirculating: String get() = _supplyCirculating.coolNumber
-    val supplyTotal: String get() = if (_supplyTotal == 0f) "∞" else _supplyTotal.coolNumber
-    val supplyMax: String get() = if (_supplyMax == 0f) "∞" else _supplyMax.coolNumber
-    val supplyProgress: Int get() = (_supplyCirculating / (if (_supplyMax == 0f) _supplyTotal else _supplyMax) * 100).toInt()
+    val price: String
+        get() = _price.amountWithCurrency()
+    val marketCap: String
+        get() = _marketCap.amountWithCurrency()
+    val supplyCirculating: String
+        get() = _supplyCirculating.coolNumber
+    val supplyTotal: String
+        get() = if (_supplyTotal == 0f) "∞" else _supplyTotal.coolNumber
+    val supplyMax: String
+        get() = if (_supplyMax == 0f) "∞" else _supplyMax.coolNumber
+    val supplyProgress: Int
+        get() = (_supplyCirculating / (if (_supplyMax == 0f) _supplyTotal else _supplyMax) * 100).toInt()
 
     companion object {
 

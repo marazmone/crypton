@@ -29,7 +29,7 @@ jobs:
           restore-keys: |
             gradle-${{ hashFiles('gradle-checksums.txt') }}-
       - name: Build App
-        run: ./gradlew :app:assembleDebug --no-build-cache
+        run: ./gradlew :androidApp:assembleDebug --no-build-cache
 
       - uses: actions/upload-artifact@v3
         with:
