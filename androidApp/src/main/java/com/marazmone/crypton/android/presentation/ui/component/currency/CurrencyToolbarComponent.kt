@@ -32,6 +32,9 @@ import com.marazmone.crypton.android.presentation.ui.Colors.Main.Background
 import com.marazmone.crypton.android.presentation.ui.Colors.Main.BackgroundSecond
 import com.marazmone.crypton.domain.model.currency.CurrencyDetail
 
+private const val WeightSide = 20f
+private const val WeightCenter = 80f
+
 @Composable
 fun CurrencyToolbarComponent(
     model: CurrencyDetail,
@@ -48,7 +51,7 @@ fun CurrencyToolbarComponent(
         Box(
             contentAlignment = Alignment.Center,
             modifier = Modifier
-                .weight(20f),
+                .weight(WeightSide),
         ) {
             Icon(
                 painter = painterResource(id = R.drawable.ic_close),
@@ -64,7 +67,7 @@ fun CurrencyToolbarComponent(
         Row(
             modifier = Modifier
                 .fillMaxWidth()
-                .weight(80f),
+                .weight(WeightCenter),
             verticalAlignment = Alignment.CenterVertically,
             horizontalArrangement = Arrangement.Center
         ) {
@@ -86,13 +89,15 @@ fun CurrencyToolbarComponent(
             )
             Spacer(modifier = Modifier.width(16.dp))
             Text(
-                text = model.name, style = MaterialTheme.typography.titleLarge, maxLines = 1,
+                text = model.name,
+                style = MaterialTheme.typography.titleLarge,
+                maxLines = 1,
                 overflow = TextOverflow.Ellipsis
             )
         }
         Box(
             contentAlignment = Alignment.Center,
-            modifier = Modifier.weight(20f),
+            modifier = Modifier.weight(WeightSide),
         ) {
             CurrencyFavoriteComponent(isFavorite = model.isFavorite) {
                 onChangeFavoriteAction?.invoke(model.isFavorite.not())

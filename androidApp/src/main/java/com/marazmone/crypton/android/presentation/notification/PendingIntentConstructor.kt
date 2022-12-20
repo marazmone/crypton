@@ -22,10 +22,12 @@ object PendingIntentConstructor {
             action = BuildConfig.APPLICATION_ID.plus(Math.random())
             putExtra(NOTIFICATION_TYPE, notificationType.type)
         }
-        if (notificationData != null) newIntent.putExtra(
-            NOTIFICATION_DATA,
-            notificationData.toBundle()
-        )
+        if (notificationData != null) {
+            newIntent.putExtra(
+                NOTIFICATION_DATA,
+                notificationData.toBundle()
+            )
+        }
         return PendingIntent.getActivity(context, 0, newIntent, pendingIntentFlag)
     }
 }

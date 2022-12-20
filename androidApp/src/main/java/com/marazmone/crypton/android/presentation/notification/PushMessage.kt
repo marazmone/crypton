@@ -2,7 +2,6 @@ package com.marazmone.crypton.android.presentation.notification
 
 import java.util.*
 
-
 sealed interface PushMessage {
     fun getType(): NotificationType
     fun getData(): Map<String, String>
@@ -26,5 +25,4 @@ data class DailyCurrencyRateChangesMessage(
             NotificationKeys.KEY_BODY to body,
         )
     }
-
 }

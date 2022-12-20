@@ -25,6 +25,9 @@ import com.marazmone.crypton.android.presentation.ui.Colors.Rate.Down
 import com.marazmone.crypton.android.presentation.ui.Colors.Rate.Up
 import com.marazmone.crypton.utils.amountWithCurrency
 
+private const val RateDownAngle = 180f
+private const val RateTopAngle = 0f
+
 @Composable
 fun PercentChangeComponent(
     percentChange: Float,
@@ -34,7 +37,7 @@ fun PercentChangeComponent(
     textStyle: TextStyle = MaterialTheme.typography.labelMedium
 ) {
     val rateColor = if (percentChange < 0f) Down else Up
-    val rateRotate = if (percentChange < 0f) 180f else 0f
+    val rateRotate = if (percentChange < 0f) RateDownAngle else RateTopAngle
     val formattedText = percentChange.amountWithCurrency("%")
     Row(
         modifier = modifier,

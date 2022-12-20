@@ -12,8 +12,7 @@ enum class NotificationImportance {
     IMPORTANCE_MAX,
 }
 
-
-const val CURRENCY_RATE_CHANGES_ID = "currency_rate_changes_id"
+const val CurrencyRateChangesId = "currency_rate_changes_id"
 
 sealed class NotificationChannelDescription(
     val channelId: String,
@@ -23,9 +22,8 @@ sealed class NotificationChannelDescription(
 ) {
 
     object DailyCurrencyRateChanges : NotificationChannelDescription(
-        channelId = CURRENCY_RATE_CHANGES_ID,
+        channelId = CurrencyRateChangesId,
         channelName = R.string.notification_channel_currency_changes,
         description = R.string.notification_channel_daily_currency_changes
     )
-
 }

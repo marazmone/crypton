@@ -27,11 +27,13 @@ val datasourceModule = module {
     single {
         HttpClient {
             install(ContentNegotiation) {
-                json(Json {
+                json(
+                    Json {
                     prettyPrint = true
                     isLenient = true
                     ignoreUnknownKeys = true
-                })
+                }
+                )
             }
             install(Logging) {
                 logger = object : Logger {

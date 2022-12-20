@@ -54,6 +54,4 @@ class CurrencyFavoriteViewModel(
         )
         is Action.Refresh -> currentState.copy(isRefresh = true)
     }
-
-
 }

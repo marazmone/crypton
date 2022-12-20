@@ -1,7 +1,10 @@
+import org.jlleitschuh.gradle.ktlint.tasks.BaseKtLintCheckTask
+
 plugins {
     id("com.android.application")
     kotlin("android")
     kotlin("plugin.serialization")
+    id("org.jlleitschuh.gradle.ktlint")
 }
 
 android {
@@ -30,6 +33,9 @@ android {
         kotlinCompilerExtensionVersion = "1.3.2"
     }
     namespace = "com.marazmone.crypton.android"
+    tasks.withType(BaseKtLintCheckTask::class).configureEach {
+        workerMaxHeapSize.set("512m")
+    }
 }
 
 dependencies {
@@ -66,4 +72,10 @@ dependencies {
     val work_version = "2.7.1"
     implementation("androidx.work:work-runtime-ktx:$work_version")
     testImplementation("junit:junit:4.13.2")
+    detektPlugins("io.gitlab.arturbosch.detekt:detekt-formatting:1.22.0")
+}
+
+ktlint {
+    android.set(true)
+    outputColorName.set("RED")
 }

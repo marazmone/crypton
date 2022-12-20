@@ -19,6 +19,8 @@ import androidx.compose.ui.draw.rotate
 import androidx.compose.ui.unit.dp
 import com.marazmone.crypton.android.presentation.ui.Colors.Main
 
+private const val RotateArrow = 90f
+
 @Composable
 fun ListUpFloatingActionButton(
     extended: Boolean,
@@ -36,7 +38,7 @@ fun ListUpFloatingActionButton(
             modifier = Modifier
                 .size(60.dp)
                 .clip(CircleShape)
-                .rotate(90f)
+                .rotate(RotateArrow)
                 .background(Main.Button),
         ) {
             Icon(

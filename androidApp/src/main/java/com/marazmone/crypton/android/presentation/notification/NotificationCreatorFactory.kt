@@ -3,7 +3,7 @@ package com.marazmone.crypton.android.presentation.notification
 import android.content.Context
 import com.marazmone.crypton.android.presentation.notification.type.DailyCurrencyRateChangesNotification
 
-class NotificationCreatorFactory (
+class NotificationCreatorFactory(
     context: Context
 ) : NotificationCreator(context) {
 

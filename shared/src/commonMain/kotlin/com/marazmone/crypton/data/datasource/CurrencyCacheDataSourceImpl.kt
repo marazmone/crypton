@@ -36,7 +36,6 @@ class CurrencyCacheDataSourceImpl(
     override suspend fun getById(id: String): CurrencyEntity? =
         realm.query<CurrencyEntity>("id == $0", id).find().firstOrNull()
 
-
     override suspend fun getAll(): List<CurrencyEntity> =
         realm.query<CurrencyEntity>().find().sortedBy { it.cmcRank }
 

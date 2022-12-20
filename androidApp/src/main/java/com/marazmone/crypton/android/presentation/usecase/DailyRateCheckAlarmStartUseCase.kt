@@ -8,8 +8,14 @@ import com.marazmone.crypton.android.presentation.broadcast.AlarmReceiver
 import com.marazmone.crypton.android.presentation.broadcast.ReceiverName
 import com.marazmone.crypton.domain.usecase.reminder.DailyReminderStartedGetUseCase
 import com.marazmone.crypton.domain.usecase.reminder.DailyReminderStartedSaveUseCase
+import com.marazmone.crypton.utils.secToMs
 import java.time.LocalDateTime
 import java.time.ZoneOffset
+
+private const val DayStartWorker = 1L
+private const val HourStartWorker = 9
+private const val MinuteStartWorker = 0
+private const val SecondStartWorker = 0
 
 class DailyRateCheckAlarmStartUseCase(
     private val context: Context,
@@ -43,11 +49,11 @@ class DailyRateCheckAlarmStartUseCase(
      */
     private fun getInitialSecondsDelayInterval(): Long {
         val todayDate: LocalDateTime = LocalDateTime.now()
-        val nextDayDate: LocalDateTime = todayDate.plusDays(1)
-            .withHour(9)
-            .withMinute(0)
-            .withSecond(0)
+        val nextDayDate: LocalDateTime = todayDate.plusDays(DayStartWorker)
+            .withHour(HourStartWorker)
+            .withMinute(MinuteStartWorker)
+            .withSecond(SecondStartWorker)
 
-        return nextDayDate.toEpochSecond(ZoneOffset.UTC) * 1000L
+        return nextDayDate.toEpochSecond(ZoneOffset.UTC).secToMs
     }
 }
