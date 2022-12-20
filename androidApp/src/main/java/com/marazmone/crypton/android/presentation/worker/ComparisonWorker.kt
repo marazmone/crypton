@@ -8,11 +8,11 @@ import com.marazmone.crypton.android.presentation.notification.DailyCurrencyRate
 import com.marazmone.crypton.android.presentation.notification.NotificationCreator
 import com.marazmone.crypton.domain.usecase.currency.CurrencyGetAllFavoriteUseCase
 import com.marazmone.crypton.domain.usecase.currency.CurrencyUpdateByIdsUseCase
-import com.marazmone.crypton.domain.usecase.reminder.DailyReminderStartedGetUseCase
-import com.marazmone.crypton.domain.usecase.reminder.DailyReminderStartedSaveUseCase
-import kotlin.math.absoluteValue
 import kotlinx.serialization.encodeToString
 import kotlinx.serialization.json.Json
+import kotlin.math.absoluteValue
+
+private const val LimitChangePercentValue = 5f
 
 class ComparisonWorker(
     appContext: Context,
@@ -32,7 +32,7 @@ class ComparisonWorker(
         val list = result.getOrDefault(emptyList())
 
         val onlyFavoriteCurrencies = list.filter { it.isFavorite }
-            .filter { it.percentChange24H.absoluteValue >= 5.0 }
+            .filter { it.percentChange24H.absoluteValue >= LimitChangePercentValue }
             .map {
                 CurrencyChange(
                     symbol = it.symbol,

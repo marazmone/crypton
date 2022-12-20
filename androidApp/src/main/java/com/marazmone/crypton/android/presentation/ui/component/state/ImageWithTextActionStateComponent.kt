@@ -72,7 +72,6 @@ private fun ImageWithTextActionStateComponentPreview_ERROR() {
             resId = R.drawable.im_error_state,
             text = stringResource(id = R.string.something_wrong)
         ) {
-
         }
     }
 }

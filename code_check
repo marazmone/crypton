@@ -1,0 +1,11 @@
+#!/bin/bash
+
+case "$1" in
+
+d)  ./gradlew detekt
+    ;;
+k)  ./gradlew ktlintCheck
+    ;;
+all)  ./gradlew ktlintCheck && ./gradlew detekt
+    ;;
+esac

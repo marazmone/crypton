@@ -33,6 +33,5 @@ class App : Application(), KoinComponent {
                 useCaseModule,
             )
         }
-
     }
 }

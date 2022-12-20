@@ -6,10 +6,10 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.marazmone.crypton.android.BuildConfig
-import kotlin.properties.Delegates
 import kotlinx.coroutines.channels.Channel
 import kotlinx.coroutines.flow.receiveAsFlow
 import kotlinx.coroutines.launch
+import kotlin.properties.Delegates
 
 abstract class BaseViewModel<STATE : BaseViewState, ACTION : BaseViewAction, EFFECT : BaseViewEffect> : ViewModel() {
 

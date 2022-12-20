@@ -38,7 +38,7 @@ class CurrencyRepositoryImpl(
         cache.updateFavorite(id, isFavorite)
 
     override suspend fun updateByIds(ids: List<String>): List<CurrencyListItem> {
-        val remote =  remote.getAll(ids = ids.joinToString(","))
+        val remote = remote.getAll(ids = ids.joinToString(","))
         val entities = responseToEntityMapper.listAsync(remote)
         cache.save(entities)
         return entityToListItemMapper.listAsync(entities)

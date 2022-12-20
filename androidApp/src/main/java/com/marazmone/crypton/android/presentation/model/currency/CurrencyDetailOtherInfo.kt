@@ -59,4 +59,3 @@ val CurrencyDetail.otherInfo: List<CurrencyDetailOtherInfo>
             _date = atlDate
         ),
     )
-

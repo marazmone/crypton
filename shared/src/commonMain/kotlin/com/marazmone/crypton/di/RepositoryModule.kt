@@ -5,9 +5,7 @@ import com.marazmone.crypton.di.MapperNamed.CURRENCY_ENTITY_TO_DETAIL
 import com.marazmone.crypton.di.MapperNamed.CURRENCY_ENTITY_TO_LIST_ITEM
 import com.marazmone.crypton.di.MapperNamed.CURRENCY_RESPONSE_TO_ENTITY
 import com.marazmone.crypton.domain.repository.CurrencyRepository
-import org.koin.core.module.dsl.bind
 import org.koin.core.module.dsl.named
-import org.koin.core.module.dsl.singleOf
 import org.koin.core.qualifier.named
 import org.koin.dsl.module
 

@@ -6,6 +6,7 @@ plugins {
     kotlin("plugin.serialization")
     id("com.android.library")
     id("io.realm.kotlin")
+    id("org.jlleitschuh.gradle.ktlint")
 }
 
 version = "1.0"
@@ -39,7 +40,9 @@ kotlin {
         val commonMain by getting {
             dependencies {
                 implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:$coroutinesVersion")
-                implementation("org.jetbrains.kotlinx:kotlinx-serialization-core:$serializationVersion")
+                implementation(
+                    "org.jetbrains.kotlinx:kotlinx-serialization-core:$serializationVersion"
+                )
                 implementation("io.ktor:ktor-client-core:$ktorVersion")
                 implementation("io.ktor:ktor-client-serialization:$ktorVersion")
                 implementation("io.ktor:ktor-client-content-negotiation:$ktorVersion")
@@ -97,4 +100,9 @@ android {
         targetSdk = 33
     }
     namespace = "com.marazmone.crypton"
+}
+
+ktlint {
+    verbose.set(true)
+    outputToConsole.set(true)
 }

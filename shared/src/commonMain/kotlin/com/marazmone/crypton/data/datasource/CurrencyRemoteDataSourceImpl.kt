@@ -6,7 +6,6 @@ import com.marazmone.crypton.data.remote.RemoteConst.QueryParams.PAGE
 import com.marazmone.crypton.data.remote.RemoteConst.QueryParams.PER_PAGE
 import com.marazmone.crypton.data.remote.RemoteConst.QueryParams.PRICE_CHANGE_PERCENTAGE
 import com.marazmone.crypton.data.remote.RemoteConst.QueryParams.VS_CURRENCY
-import com.marazmone.crypton.data.remote.RemoteConst.Url.BASE
 import com.marazmone.crypton.data.remote.RemoteConst.Url.GET_ALL
 import com.marazmone.crypton.data.remote.response.CurrencyResponse
 import io.ktor.client.*
@@ -34,5 +33,4 @@ class CurrencyRemoteDataSourceImpl(
         }
         return request.body()
     }
-
 }

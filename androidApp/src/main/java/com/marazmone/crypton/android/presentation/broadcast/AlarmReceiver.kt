@@ -4,13 +4,13 @@ import android.content.BroadcastReceiver
 import android.content.Context
 import android.content.Intent
 import com.marazmone.crypton.android.presentation.usecase.DailyRateCheckWorkerStartUseCase
-import kotlin.coroutines.CoroutineContext
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.launch
 import org.koin.core.component.KoinComponent
 import org.koin.core.component.inject
+import kotlin.coroutines.CoroutineContext
 
 class AlarmReceiver : BroadcastReceiver(), KoinComponent, CoroutineScope {
 

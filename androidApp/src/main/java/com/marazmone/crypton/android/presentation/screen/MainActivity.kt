@@ -60,7 +60,7 @@ import com.marazmone.crypton.android.presentation.ui.NoRippleTheme
 import com.marazmone.crypton.android.presentation.util.PaddingValuesBottom
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
-private const val BOTTOM_BAR_ANIMATION_HEIGHT = 128
+private const val BottomBarAnimationHeight = 128
 
 class MainActivity : AppCompatActivity() {
 
@@ -92,8 +92,8 @@ class MainActivity : AppCompatActivity() {
             bottomBar = {
                 AnimatedVisibility(
                     visible = needBottom.value,
-                    enter = fadeIn() + slideInVertically(initialOffsetY = { BOTTOM_BAR_ANIMATION_HEIGHT }),
-                    exit = fadeOut() + slideOutVertically(targetOffsetY = { BOTTOM_BAR_ANIMATION_HEIGHT }),
+                    enter = fadeIn() + slideInVertically(initialOffsetY = { BottomBarAnimationHeight }),
+                    exit = fadeOut() + slideOutVertically(targetOffsetY = { BottomBarAnimationHeight }),
                 ) {
                     BottomNavigationView(navController)
                 }

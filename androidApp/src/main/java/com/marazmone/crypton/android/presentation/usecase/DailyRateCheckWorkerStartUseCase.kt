@@ -6,7 +6,7 @@ import androidx.work.OneTimeWorkRequestBuilder
 import androidx.work.WorkManager
 import com.marazmone.crypton.android.presentation.worker.ComparisonWorker
 
-private const val CHECK_RATE_WORK_TAG = "check_rate_work_tag_new"
+private const val CheckRateWorkTag = "check_rate_work_tag_new"
 
 class DailyRateCheckWorkerStartUseCase(
     private val workManager: WorkManager,
@@ -18,7 +18,7 @@ class DailyRateCheckWorkerStartUseCase(
             .build()
         val startRateWork = OneTimeWorkRequestBuilder<ComparisonWorker>()
             .setConstraints(constraints)
-            .addTag(CHECK_RATE_WORK_TAG)
+            .addTag(CheckRateWorkTag)
             .build()
         workManager.enqueue(startRateWork)
     }

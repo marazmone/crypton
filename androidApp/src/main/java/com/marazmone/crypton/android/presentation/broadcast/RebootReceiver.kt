@@ -6,13 +6,13 @@ import android.content.Context
 import android.content.Intent
 import com.marazmone.crypton.android.presentation.usecase.DailyRateCheckAlarmStartUseCase
 import com.marazmone.crypton.domain.usecase.reminder.DailyReminderStartedSaveUseCase
-import kotlin.coroutines.CoroutineContext
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.launch
 import org.koin.core.component.KoinComponent
 import org.koin.core.component.inject
+import kotlin.coroutines.CoroutineContext
 
 class RebootReceiver : BroadcastReceiver(), KoinComponent, CoroutineScope {
 
