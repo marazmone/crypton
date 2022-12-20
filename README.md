@@ -22,3 +22,16 @@ To be continued...
 [🇵🇹](https://crowdin.com/project/crypton/pt-PT)
 [🇪🇸](https://crowdin.com/project/crypton/es-ES)
 
+## CI Pipeline
+
+CI is utilizing [GitHub Actions](https://github.com/features/actions). Complete GitHub Actions config is located in
+the [.github/workflows](.github/workflows) folder.
+
+### Pull Request Verification
+
+Series of workflows run (in parallel) for every opened PR and after merging PR to the `master` branch:
+
+* `./gradlew ktlintCheck` - runs ktlint
+* `./gradlew detekt` - runs detekt
+* `./gradlew :androidApp:assembleDebug --no-build-cache` - build debug
+
