@@ -16,13 +16,15 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.draw.rotate
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import com.marazmone.crypton.android.presentation.ui.AppTheme
 import com.marazmone.crypton.android.presentation.ui.Colors.Main
 
 private const val RotateArrow = 90f
 
 @Composable
-fun ListUpFloatingActionButton(
+fun ListUpFloatingButtonWidget(
     extended: Boolean,
     modifier: Modifier = Modifier,
     onClick: () -> Unit
@@ -46,5 +48,18 @@ fun ListUpFloatingActionButton(
                 contentDescription = null
             )
         }
+    }
+}
+
+@Preview(
+    showBackground = true,
+)
+@Composable
+private fun ListUpFloatingButtonWidget_Preview() {
+    AppTheme {
+        ListUpFloatingButtonWidget(
+            extended = true,
+            onClick = {},
+        )
     }
 }

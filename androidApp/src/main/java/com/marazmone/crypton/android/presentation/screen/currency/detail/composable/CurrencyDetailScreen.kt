@@ -8,11 +8,11 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import com.marazmone.crypton.android.R
 import com.marazmone.crypton.android.presentation.screen.currency.detail.CurrencyDetailContract.State
-import com.marazmone.crypton.android.presentation.ui.component.currency.CurrencyDetailKeyFiguresComponent
-import com.marazmone.crypton.android.presentation.ui.component.currency.CurrencyDetailOtherInfoComponent
-import com.marazmone.crypton.android.presentation.ui.component.currency.CurrencyDetailPriceComponent
-import com.marazmone.crypton.android.presentation.ui.component.currency.CurrencyToolbarComponent
-import com.marazmone.crypton.android.presentation.ui.component.state.ImageWithTextActionStateComponent
+import com.marazmone.crypton.android.presentation.screen.currency.detail.composable.component.CurrencyDetailKeyFiguresWidget
+import com.marazmone.crypton.android.presentation.screen.currency.detail.composable.component.CurrencyDetailOtherInfoWidget
+import com.marazmone.crypton.android.presentation.screen.currency.detail.composable.component.CurrencyDetailPriceWidget
+import com.marazmone.crypton.android.presentation.screen.currency.detail.composable.component.CurrencyToolbarComponent
+import com.marazmone.crypton.android.presentation.ui.component.state.ImageWithTextActionStateWidget
 
 @Composable
 fun CurrencyDetailScreen(
@@ -36,14 +36,14 @@ fun CurrencyDetailScreen(
                     },
                 )
                 LazyColumn {
-                    item { CurrencyDetailPriceComponent(state.data) }
-                    item { CurrencyDetailKeyFiguresComponent(state.data) }
-                    item { CurrencyDetailOtherInfoComponent(state.data) }
+                    item { CurrencyDetailPriceWidget(state.data) }
+                    item { CurrencyDetailKeyFiguresWidget(state.data) }
+                    item { CurrencyDetailOtherInfoWidget(state.data) }
                 }
             }
         }
         state.isError -> {
-            ImageWithTextActionStateComponent(
+            ImageWithTextActionStateWidget(
                 resId = R.drawable.im_error_state,
                 text = stringResource(id = R.string.something_wrong),
             )

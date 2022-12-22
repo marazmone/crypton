@@ -1,4 +1,4 @@
-package com.marazmone.crypton.android.presentation.ui.component.currency
+package com.marazmone.crypton.android.presentation.screen.currency.detail.composable.component
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
@@ -16,15 +16,19 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.marazmone.crypton.android.presentation.model.currency.CurrencyDetailOtherInfo
 import com.marazmone.crypton.android.presentation.model.currency.otherInfo
+import com.marazmone.crypton.android.presentation.ui.AppTheme
 import com.marazmone.crypton.android.presentation.ui.Colors
-import com.marazmone.crypton.android.presentation.ui.component.common.PercentChangeComponent
+import com.marazmone.crypton.android.presentation.ui.component.common.PercentChangeWidget
 import com.marazmone.crypton.domain.model.currency.CurrencyDetail
 
 @Composable
-fun CurrencyDetailOtherInfoComponent(model: CurrencyDetail) {
+fun CurrencyDetailOtherInfoWidget(
+    model: CurrencyDetail,
+) {
     Column(
         modifier = Modifier
             .padding(top = 16.dp)
@@ -47,6 +51,7 @@ fun CurrencyDetailOtherInfoComponent(model: CurrencyDetail) {
                         Text(text = info.text, style = MaterialTheme.typography.bodyMedium)
                     }
                 }
+
                 is CurrencyDetailOtherInfo.AllTime -> {
                     Row(
                         horizontalArrangement = Arrangement.SpaceBetween,
@@ -59,7 +64,7 @@ fun CurrencyDetailOtherInfoComponent(model: CurrencyDetail) {
                                     Color.White.copy(alpha = 0.6f)
                                 )
                             )
-                            PercentChangeComponent(
+                            PercentChangeWidget(
                                 percentChange = info.percentChange,
                                 verticalAlignment = Alignment.CenterVertically,
                                 textStyle = MaterialTheme.typography.bodyMedium
@@ -82,5 +87,17 @@ fun CurrencyDetailOtherInfoComponent(model: CurrencyDetail) {
                 )
             }
         }
+    }
+}
+
+@Preview(
+    showBackground = true,
+)
+@Composable
+private fun CurrencyDetailOtherInfoWidget_Preview() {
+    AppTheme {
+        CurrencyDetailOtherInfoWidget(
+            model = CurrencyDetail.template,
+        )
     }
 }

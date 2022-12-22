@@ -1,4 +1,4 @@
-package com.marazmone.crypton.android.presentation.ui.component.currency
+package com.marazmone.crypton.android.presentation.screen.currency.detail.composable.component
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -18,15 +18,20 @@ import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalConfiguration
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.marazmone.crypton.android.R
+import com.marazmone.crypton.android.R.string
+import com.marazmone.crypton.android.presentation.ui.AppTheme
 import com.marazmone.crypton.android.presentation.ui.Colors.Gradient.LightEnd
 import com.marazmone.crypton.android.presentation.ui.Colors.Gradient.LightStart
-import com.marazmone.crypton.android.presentation.ui.component.common.ProgressBarComponent
+import com.marazmone.crypton.android.presentation.ui.component.common.ProgressBarWidget
 import com.marazmone.crypton.domain.model.currency.CurrencyDetail
 
 @Composable
-fun CurrencyDetailKeyFiguresComponent(model: CurrencyDetail) {
+fun CurrencyDetailKeyFiguresWidget(
+    model: CurrencyDetail,
+) {
     val configuration = LocalConfiguration.current
     val screenWidth = configuration.screenWidthDp.dp
     Column(
@@ -44,15 +49,15 @@ fun CurrencyDetailKeyFiguresComponent(model: CurrencyDetail) {
             horizontalArrangement = Arrangement.SpaceBetween
         ) {
             KeyFiguresItem(
-                topText = stringResource(id = R.string.symbol),
+                topText = stringResource(id = string.symbol),
                 bottomText = model.symbol
             )
             KeyFiguresItem(
-                topText = stringResource(id = R.string.rank),
+                topText = stringResource(id = string.rank),
                 bottomText = model.rank.toString()
             )
             KeyFiguresItem(
-                topText = stringResource(id = R.string.market_cap_full),
+                topText = stringResource(id = string.market_cap_full),
                 bottomText = model.marketCap
             )
         }
@@ -67,20 +72,20 @@ fun CurrencyDetailKeyFiguresComponent(model: CurrencyDetail) {
             horizontalArrangement = Arrangement.SpaceBetween
         ) {
             KeyFiguresItem(
-                topText = stringResource(id = R.string.supply_circulating),
+                topText = stringResource(id = string.supply_circulating),
                 bottomText = model.supplyCirculating
             )
             KeyFiguresItem(
-                topText = stringResource(id = R.string.supply_total),
+                topText = stringResource(id = string.supply_total),
                 bottomText = model.supplyTotal
             )
             KeyFiguresItem(
-                topText = stringResource(id = R.string.supply_max),
+                topText = stringResource(id = string.supply_max),
                 bottomText = model.supplyMax
             )
         }
         Spacer(modifier = Modifier.height(4.dp))
-        ProgressBarComponent(
+        ProgressBarWidget(
             width = screenWidth,
             backgroundColor = Color.White,
             foregroundColor = Brush.horizontalGradient(listOf(LightStart, LightEnd)),
@@ -93,7 +98,10 @@ fun CurrencyDetailKeyFiguresComponent(model: CurrencyDetail) {
 }
 
 @Composable
-private fun KeyFiguresItem(topText: String, bottomText: String) {
+private fun KeyFiguresItem(
+    topText: String,
+    bottomText: String,
+) {
     Column(
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
@@ -104,6 +112,31 @@ private fun KeyFiguresItem(topText: String, bottomText: String) {
         Text(
             text = bottomText,
             style = MaterialTheme.typography.titleLarge
+        )
+    }
+}
+
+@Preview(
+    showBackground = true,
+)
+@Composable
+private fun KeyFiguresItem_Preview() {
+    AppTheme {
+        KeyFiguresItem(
+            topText = "SYMBOL",
+            bottomText = "SOL",
+        )
+    }
+}
+
+@Preview(
+    showBackground = true,
+)
+@Composable
+private fun CurrencyDetailKeyFiguresComponent_Preview() {
+    AppTheme {
+        CurrencyDetailKeyFiguresWidget(
+            model = CurrencyDetail.template,
         )
     }
 }

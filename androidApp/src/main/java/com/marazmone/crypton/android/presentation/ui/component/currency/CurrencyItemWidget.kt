@@ -28,11 +28,11 @@ import com.marazmone.crypton.android.R
 import com.marazmone.crypton.android.presentation.ui.AppTheme
 import com.marazmone.crypton.android.presentation.ui.Colors.Main.Background
 import com.marazmone.crypton.android.presentation.ui.Colors.Main.BackgroundSecond
-import com.marazmone.crypton.android.presentation.ui.component.common.PercentChangeComponent
+import com.marazmone.crypton.android.presentation.ui.component.common.PercentChangeWidget
 import com.marazmone.crypton.domain.model.currency.CurrencyListItem
 
 @Composable
-fun CurrencyItemComponent(
+fun CurrencyItemWidget(
     item: CurrencyListItem,
     modifier: Modifier = Modifier,
 ) {
@@ -93,7 +93,7 @@ fun CurrencyItemComponent(
             verticalAlignment = Alignment.CenterVertically,
             horizontalArrangement = Arrangement.SpaceBetween
         ) {
-            PercentChangeComponent(
+            PercentChangeWidget(
                 percentChange = item.percentChange24H,
                 modifier = Modifier
                     .weight(1f)
@@ -117,9 +117,9 @@ fun CurrencyItemComponent(
 
 @Preview(showBackground = true)
 @Composable
-fun CurrencyItem_UP_Preview() {
+fun CurrencyItem_Up_Preview() {
     AppTheme {
-        CurrencyItemComponent(
+        CurrencyItemWidget(
             CurrencyListItem(
                 id = "1",
                 name = "Bitcoin",
@@ -137,9 +137,9 @@ fun CurrencyItem_UP_Preview() {
 
 @Preview(showBackground = true)
 @Composable
-fun CurrencyItem_DOWN_Preview() {
+fun CurrencyItem_Down_Preview() {
     AppTheme {
-        CurrencyItemComponent(
+        CurrencyItemWidget(
             CurrencyListItem(
                 id = "1",
                 name = "Bitcoin",

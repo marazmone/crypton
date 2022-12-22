@@ -23,7 +23,7 @@ import com.marazmone.crypton.android.presentation.ui.AppTheme
 import com.marazmone.crypton.android.presentation.ui.Colors
 
 @Composable
-fun ImageWithTextActionStateComponent(
+fun ImageWithTextActionStateWidget(
     @DrawableRes resId: Int,
     text: String,
     onActionRepeat: (() -> Unit)? = null,
@@ -61,14 +61,11 @@ fun ImageWithTextActionStateComponent(
 
 @Preview(
     showBackground = true,
-    backgroundColor = 0xFF11124B,
-    showSystemUi = true,
-    name = "Error"
 )
 @Composable
-private fun ImageWithTextActionStateComponentPreview_ERROR() {
+private fun ImageWithTextActionStateWidget_Preview_Error() {
     AppTheme {
-        ImageWithTextActionStateComponent(
+        ImageWithTextActionStateWidget(
             resId = R.drawable.im_error_state,
             text = stringResource(id = R.string.something_wrong)
         ) {
@@ -78,14 +75,11 @@ private fun ImageWithTextActionStateComponentPreview_ERROR() {
 
 @Preview(
     showBackground = true,
-    backgroundColor = 0xFF11124B,
-    showSystemUi = true,
-    name = "Empty"
 )
 @Composable
-private fun ImageWithTextActionStateComponentPreview_EMPTY() {
+private fun ImageWithTextActionStateWidget_Preview_Empty() {
     AppTheme {
-        ImageWithTextActionStateComponent(
+        ImageWithTextActionStateWidget(
             resId = R.drawable.im_empty_state,
             text = stringResource(id = R.string.favorite_empty_state)
         )
