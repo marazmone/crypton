@@ -18,10 +18,10 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import com.marazmone.crypton.android.R
 import com.marazmone.crypton.android.presentation.screen.currency.favorite.CurrencyFavoriteContract
-import com.marazmone.crypton.android.presentation.ui.component.common.ListUpFloatingActionButton
-import com.marazmone.crypton.android.presentation.ui.component.common.PullRefresh
-import com.marazmone.crypton.android.presentation.ui.component.currency.CurrencyItemComponent
-import com.marazmone.crypton.android.presentation.ui.component.state.ImageWithTextActionStateComponent
+import com.marazmone.crypton.android.presentation.ui.component.common.ListUpFloatingButtonWidget
+import com.marazmone.crypton.android.presentation.ui.component.common.PullRefreshWidget
+import com.marazmone.crypton.android.presentation.ui.component.currency.CurrencyItemWidget
+import com.marazmone.crypton.android.presentation.ui.component.state.ImageWithTextActionStateWidget
 import com.marazmone.crypton.android.presentation.ui.component.util.isScrollingBottom
 import com.marazmone.crypton.android.presentation.util.PaddingValuesBottom
 import com.marazmone.crypton.android.presentation.util.PaddingValuesVertical
@@ -44,14 +44,14 @@ fun CurrencyFavoriteScreen(
     ) {
         when {
             state.isError -> {
-                ImageWithTextActionStateComponent(
+                ImageWithTextActionStateWidget(
                     resId = R.drawable.im_error_state,
                     text = state.errorText
                 )
             }
 
             state.list.isEmpty() -> {
-                ImageWithTextActionStateComponent(
+                ImageWithTextActionStateWidget(
                     resId = R.drawable.im_empty_state,
                     text = stringResource(id = R.string.favorite_empty_state)
                 )
@@ -64,7 +64,7 @@ fun CurrencyFavoriteScreen(
                     modifier = Modifier.fillMaxSize(),
                 ) {
                     items(state.list) { item ->
-                        CurrencyItemComponent(
+                        CurrencyItemWidget(
                             item = item,
                             modifier = Modifier.clickable {
                                 onOpenDetailScreen.invoke(item.id)
@@ -74,7 +74,7 @@ fun CurrencyFavoriteScreen(
                 }
             }
         }
-        ListUpFloatingActionButton(
+        ListUpFloatingButtonWidget(
             extended = lazyListState.isScrollingBottom(),
             modifier = Modifier
                 .padding(PaddingValuesBottom())
@@ -86,7 +86,7 @@ fun CurrencyFavoriteScreen(
                 }
             }
         )
-        PullRefresh(
+        PullRefreshWidget(
             state = pullRefreshState,
             refreshing = { state.isRefresh },
             modifier = Modifier.align(Alignment.TopCenter)

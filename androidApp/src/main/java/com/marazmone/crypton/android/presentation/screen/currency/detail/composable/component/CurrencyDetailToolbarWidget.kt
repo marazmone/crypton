@@ -1,4 +1,4 @@
-package com.marazmone.crypton.android.presentation.ui.component.currency
+package com.marazmone.crypton.android.presentation.screen.currency.detail.composable.component
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
@@ -28,8 +28,8 @@ import androidx.compose.ui.unit.dp
 import coil.compose.SubcomposeAsyncImage
 import com.marazmone.crypton.android.R
 import com.marazmone.crypton.android.presentation.ui.AppTheme
-import com.marazmone.crypton.android.presentation.ui.Colors.Main.Background
 import com.marazmone.crypton.android.presentation.ui.Colors.Main.BackgroundSecond
+import com.marazmone.crypton.android.presentation.ui.component.currency.CurrencyFavoriteWidget
 import com.marazmone.crypton.domain.model.currency.CurrencyDetail
 
 private const val WeightSide = 20f
@@ -99,19 +99,21 @@ fun CurrencyToolbarComponent(
             contentAlignment = Alignment.Center,
             modifier = Modifier.weight(WeightSide),
         ) {
-            CurrencyFavoriteComponent(isFavorite = model.isFavorite) {
+            CurrencyFavoriteWidget(isFavorite = model.isFavorite) {
                 onChangeFavoriteAction?.invoke(model.isFavorite.not())
             }
         }
     }
 }
 
-@Preview(showBackground = true)
+@Preview(
+    showBackground = true,
+)
 @Composable
-private fun CurrencyToolbarComponentPreview() {
+private fun CurrencyToolbarComponent_Preview() {
     AppTheme {
-        Box(modifier = Modifier.background(Background)) {
-            CurrencyToolbarComponent(model = CurrencyDetail.empty)
-        }
+        CurrencyToolbarComponent(
+            model = CurrencyDetail.template,
+        )
     }
 }

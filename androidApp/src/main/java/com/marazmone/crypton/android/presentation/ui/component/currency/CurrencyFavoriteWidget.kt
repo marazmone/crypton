@@ -13,7 +13,7 @@ import com.marazmone.crypton.android.R
 import com.marazmone.crypton.android.presentation.ui.AppTheme
 
 @Composable
-fun CurrencyFavoriteComponent(
+fun CurrencyFavoriteWidget(
     isFavorite: Boolean,
     modifier: Modifier = Modifier,
     onActionClick: (() -> Unit)? = null,
@@ -35,18 +35,24 @@ fun CurrencyFavoriteComponent(
     )
 }
 
-@Preview(showBackground = true)
+@Preview(
+    showBackground = true,
+)
 @Composable
-private fun FavoriteToggleEnablePreview() {
+private fun CurrencyFavoriteWidget_Enable_Preview() {
     AppTheme {
-        CurrencyFavoriteComponent(isFavorite = true)
+        CurrencyFavoriteWidget(
+            isFavorite = true,
+        )
     }
 }
 
 @Preview(showBackground = true)
 @Composable
-private fun FavoriteToggleDisablePreview() {
+private fun CurrencyFavoriteWidget_Disable_Preview() {
     AppTheme {
-        CurrencyFavoriteComponent(isFavorite = false)
+        CurrencyFavoriteWidget(
+            isFavorite = false,
+        )
     }
 }

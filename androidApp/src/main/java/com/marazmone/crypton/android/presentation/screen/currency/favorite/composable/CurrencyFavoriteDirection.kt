@@ -9,7 +9,7 @@ import org.koin.androidx.compose.getViewModel
 @Composable
 fun CurrencyFavoriteDirection(
     navController: NavController,
-    viewModel: CurrencyFavoriteViewModel = getViewModel()
+    viewModel: CurrencyFavoriteViewModel = getViewModel(),
 ) {
     CurrencyFavoriteScreen(
         state = viewModel.state.value,

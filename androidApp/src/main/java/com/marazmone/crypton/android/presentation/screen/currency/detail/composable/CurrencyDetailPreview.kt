@@ -14,7 +14,7 @@ private fun SuccessStatePreview() {
     AppTheme {
         CurrencyDetailScreen(
             state = State(
-                data = CurrencyDetail.empty,
+                data = CurrencyDetail.template,
             ),
             onCloseClick = {},
             onChangeFavorite = {},
@@ -24,7 +24,6 @@ private fun SuccessStatePreview() {
 
 @Preview(
     showBackground = true,
-    backgroundColor = 0xFF11124B,
 )
 @Composable
 private fun ErrorStatePreview() {

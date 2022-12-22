@@ -44,30 +44,31 @@ data class CurrencyDetail(
 
     companion object {
 
-        val empty: CurrencyDetail = CurrencyDetail(
-            "",
-            "Empty Token",
-            false,
-            4f,
-            1.4f,
-            -5.4f,
-            223.44f,
-            "SOL",
-            5,
-            "",
-            123321123.1233212f,
-            12332f,
-            123321f,
-            1233211f,
-            max24H = 46000f,
-            min24H = 40000f,
-            tradingVolume = 149009900f,
-            athDate = 1638776303,
-            athPrice = 69000f,
-            athPercentChange = -35f,
-            atlPrice = 35f,
-            atlPercentChange = 10000f,
-            atlDate = 1386315503,
-        )
+        val template: CurrencyDetail
+            get() = CurrencyDetail(
+                "",
+                "Empty Token",
+                false,
+                4f,
+                1.4f,
+                -5.4f,
+                223.44f,
+                "SOL",
+                5,
+                "",
+                123321123.1233212f,
+                12332f,
+                123321f,
+                1233211f,
+                max24H = 46000f,
+                min24H = 40000f,
+                tradingVolume = 149009900f,
+                athDate = 1638776303,
+                athPrice = 69000f,
+                athPercentChange = -35f,
+                atlPrice = 35f,
+                atlPercentChange = 10000f,
+                atlDate = 1386315503,
+            )
     }
 }

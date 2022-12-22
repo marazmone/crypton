@@ -18,10 +18,10 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import com.marazmone.crypton.android.R
 import com.marazmone.crypton.android.presentation.screen.currency.list.CurrencyListContract.State
-import com.marazmone.crypton.android.presentation.ui.component.common.ListUpFloatingActionButton
-import com.marazmone.crypton.android.presentation.ui.component.common.PullRefresh
-import com.marazmone.crypton.android.presentation.ui.component.currency.CurrencyItemComponent
-import com.marazmone.crypton.android.presentation.ui.component.state.ImageWithTextActionStateComponent
+import com.marazmone.crypton.android.presentation.ui.component.common.ListUpFloatingButtonWidget
+import com.marazmone.crypton.android.presentation.ui.component.common.PullRefreshWidget
+import com.marazmone.crypton.android.presentation.ui.component.currency.CurrencyItemWidget
+import com.marazmone.crypton.android.presentation.ui.component.state.ImageWithTextActionStateWidget
 import com.marazmone.crypton.android.presentation.ui.component.util.isScrollingBottom
 import com.marazmone.crypton.android.presentation.util.PaddingValuesBottom
 import com.marazmone.crypton.android.presentation.util.PaddingValuesVertical
@@ -49,7 +49,7 @@ fun CurrencyListScreen(
             }
 
             state.isError -> {
-                ImageWithTextActionStateComponent(
+                ImageWithTextActionStateWidget(
                     resId = R.drawable.im_error_state,
                     text = state.errorText
                 )
@@ -61,7 +61,7 @@ fun CurrencyListScreen(
                     contentPadding = PaddingValuesVertical(),
                 ) {
                     items(state.list) { item ->
-                        CurrencyItemComponent(
+                        CurrencyItemWidget(
                             item = item,
                             modifier = Modifier.clickable {
                                 onOpenDetailScreenAction.invoke(item.id)
@@ -71,7 +71,7 @@ fun CurrencyListScreen(
                 }
             }
         }
-        ListUpFloatingActionButton(
+        ListUpFloatingButtonWidget(
             extended = lazyListState.isScrollingBottom(),
             modifier = Modifier
                 .padding(PaddingValuesBottom())
@@ -83,7 +83,7 @@ fun CurrencyListScreen(
                 }
             }
         )
-        PullRefresh(
+        PullRefreshWidget(
             state = pullRefreshState,
             refreshing = { state.isRefresh },
             modifier = Modifier.align(Alignment.TopCenter)
