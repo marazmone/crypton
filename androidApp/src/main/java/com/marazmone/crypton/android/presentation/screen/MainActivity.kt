@@ -60,7 +60,7 @@ import com.marazmone.crypton.android.presentation.ui.NoRippleTheme
 import com.marazmone.crypton.android.presentation.util.PaddingValuesBottom
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
-private const val BottomBarAnimationHeight = 128
+const val BottomBarAnimationHeight = 128
 
 class MainActivity : AppCompatActivity() {
 

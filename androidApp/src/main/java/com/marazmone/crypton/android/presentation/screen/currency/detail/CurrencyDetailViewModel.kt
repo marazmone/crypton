@@ -6,11 +6,15 @@ import com.marazmone.crypton.android.presentation.screen.currency.detail.Currenc
 import com.marazmone.crypton.android.presentation.screen.currency.detail.CurrencyDetailContract.Action.Error
 import com.marazmone.crypton.android.presentation.screen.currency.detail.CurrencyDetailContract.Action.Favorite
 import com.marazmone.crypton.android.presentation.screen.currency.detail.CurrencyDetailContract.Action.Success
+import com.marazmone.crypton.android.presentation.screen.currency.detail.CurrencyDetailContract.Action.TWButtonState
 import com.marazmone.crypton.android.presentation.screen.currency.detail.CurrencyDetailContract.Effect
 import com.marazmone.crypton.android.presentation.screen.currency.detail.CurrencyDetailContract.State
 import com.marazmone.crypton.domain.usecase.currency.CurrencyGetByIdUseCase
 import com.marazmone.crypton.domain.usecase.currency.CurrencySetFavoriteByIdUseCase
+import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
+
+private const val ShowTwitterButtonDelay = 500L
 
 class CurrencyDetailViewModel(
     private val currencyGetByIdUseCase: CurrencyGetByIdUseCase,
@@ -39,17 +43,43 @@ class CurrencyDetailViewModel(
         }
     }
 
+    fun hideTwitterButton() {
+        sendAction { TWButtonState(false) }
+    }
+
     override fun onReduceState(action: Action): State = when (action) {
-        is Error -> currentState.copy(
-            isError = true,
-            data = null,
-        )
-        is Success -> currentState.copy(
-            isError = false,
-            data = action.data
-        )
-        is Favorite -> currentState.copy(
-            data = currentState.data?.copy(isFavorite = action.enable)
-        )
+        is Error -> {
+            currentState.copy(
+                isError = true,
+                data = null,
+            )
+        }
+
+        is Success -> {
+            showTwitterButton()
+            currentState.copy(
+                isError = false,
+                data = action.data
+            )
+        }
+
+        is Favorite -> {
+            currentState.copy(
+                data = currentState.data?.copy(isFavorite = action.enable)
+            )
+        }
+
+        is TWButtonState -> {
+            currentState.copy(
+                twButtonVisibility = action.visible,
+            )
+        }
+    }
+
+    private fun showTwitterButton() {
+        viewModelScope.launch {
+            delay(ShowTwitterButtonDelay)
+            sendAction { TWButtonState(true) }
+        }
     }
 }

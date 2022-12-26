@@ -15,9 +15,11 @@ private fun SuccessStatePreview() {
         CurrencyDetailScreen(
             state = State(
                 data = CurrencyDetail.template,
+                twButtonVisibility = true,
             ),
             onCloseClick = {},
             onChangeFavorite = {},
+            onOpenTwitterPage = {},
         )
     }
 }
@@ -34,6 +36,7 @@ private fun ErrorStatePreview() {
             ),
             onCloseClick = {},
             onChangeFavorite = {},
+            onOpenTwitterPage = {},
         )
     }
 }
