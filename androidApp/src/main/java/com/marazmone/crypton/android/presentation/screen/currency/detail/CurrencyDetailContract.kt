@@ -9,7 +9,8 @@ class CurrencyDetailContract {
 
     data class State(
         val isError: Boolean = false,
-        val data: CurrencyDetail? = null
+        val data: CurrencyDetail? = null,
+        val twButtonVisibility: Boolean = false,
     ) : BaseViewState
 
     sealed interface Action : BaseViewAction {
@@ -17,6 +18,8 @@ class CurrencyDetailContract {
         class Success(val data: CurrencyDetail) : Action
 
         class Favorite(val enable: Boolean) : Action
+
+        class TWButtonState(val visible: Boolean) : Action
 
         object Error : Action
     }
