@@ -34,7 +34,7 @@ kotlin {
     val napierVersion = "2.6.1"
     val realVersion = "1.5.1"
     val dateTimeVersion = "0.4.0"
-    val dataStoreVersion = "1.1.0-alpha01"
+    val dataStoreVersion = "1.1.1"
 
     sourceSets {
         val commonMain by getting {
