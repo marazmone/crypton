@@ -44,7 +44,7 @@ dependencies {
     androidTestImplementation(composeBom)
     implementation(project(":shared"))
     implementation("androidx.appcompat:appcompat:1.5.1")
-    implementation("androidx.activity:activity-compose:1.6.1")
+    implementation("androidx.activity:activity-compose:1.9.3")
     implementation("io.coil-kt:coil-compose:2.2.2")
     implementation("androidx.compose.material:material")
     implementation("androidx.compose.material3:material3")
